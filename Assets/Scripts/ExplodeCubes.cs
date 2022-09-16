@@ -19,7 +19,7 @@ public class ExplodeCubes : MonoBehaviour
             }
             restartButton.SetActive(true);
             gameOver.SetActive(true);
-            Camera.main.transform.localPosition -= new Vector3(0, 0, 10f);
+            Camera.main.transform.localPosition -= new Vector3(0, 0, 7f);
             //Camera.main.transform.localPosition = new Vector3(0, 45f, 0f);
             //Camera.main.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
             Camera.main.gameObject.AddComponent<CameraShake>();

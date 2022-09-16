@@ -114,6 +114,7 @@ public class GameController : MonoBehaviour
         
         if (IsPositionEmpty(new Vector3(nowCube.x + 1, nowCube.y, nowCube.z)) && nowCube.x + 1 != cubeToPlace.position.x)
             position.Add(new Vector3(nowCube.x + 1, nowCube.y, nowCube.z));    
+        
         if (IsPositionEmpty(new Vector3(nowCube.x - 1, nowCube.y, nowCube.z)) && nowCube.x - 1 != cubeToPlace.position.x)
             position.Add(new Vector3(nowCube.x - 1, nowCube.y, nowCube.z));
 
@@ -131,7 +132,10 @@ public class GameController : MonoBehaviour
 
 
         if (position.Count > 1)
+        {
             cubeToPlace.position = position[UnityEngine.Random.Range(0, position.Count)];
+            GetComponent<AudioSource>().Play();
+        }
         else if (position.Count == 0)
         {
             Destroy(cubeToPlace.gameObject);
