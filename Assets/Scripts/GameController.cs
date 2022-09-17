@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +12,11 @@ public class GameController : MonoBehaviour
     public Transform cubeToPlace;
     private float camMoveToYPosition, camMoveSpeed = 2f;
 
-    public GameObject cubeToCreate, allCubes, vfx;
+    public Text scoreTxt;
+
+    public GameObject[] cubesToCreate;
+
+    public GameObject allCubes, vfx, newCubeBell;
     public GameObject[] canvasStartPage;
     private Rigidbody allCubesRb;
 
@@ -33,19 +38,22 @@ public class GameController : MonoBehaviour
         new Vector3(1, 0, -1),
     };
 
-    private int prevCountMaxHorizontal;
+    private int prevCountMaxHorizontal, nowCountCubes = 0;
     private Coroutine showCubePlace;
     private Transform mainCam;
     private Color toCameraColor;
 
     private void Start()
     {
+        PlayerPrefs.SetFloat("nowCountCubes", 0);
         toCameraColor = Camera.main.backgroundColor;
         mainCam = Camera.main.transform;
         camMoveToYPosition = 6f + nowCube.y - 1f;
 
         allCubesRb = allCubes.GetComponent<Rigidbody>();
-        showCubePlace = StartCoroutine(ShowCubePlace());        
+        showCubePlace = StartCoroutine(ShowCubePlace());
+
+        scoreTxt.text = "<color='#E06055'>best result: " + PlayerPrefs.GetInt("score") + "</color>\npresent result: 0";
     }
 
     private void Update()
@@ -65,14 +73,14 @@ public class GameController : MonoBehaviour
                     Destroy(obj);
             }
 
-            GameObject newCube = Instantiate(cubeToCreate, cubeToPlace.position, Quaternion.identity) as GameObject;
+            GameObject newCube = Instantiate(cubesToCreate[UnityEngine.Random.Range(0, cubesToCreate.Length)], cubeToPlace.position, Quaternion.identity) as GameObject;
 
             newCube.transform.SetParent(allCubes.transform);
             nowCube.setVector(cubeToPlace.position);
             allCubesPosition.Add(nowCube.getVector());
 
             if (PlayerPrefs.GetString("music") != "No")
-                GetComponent<AudioSource>().Play();
+                newCubeBell.GetComponent<AudioSource>().Play();
 
             GameObject newVfx = Instantiate(vfx, cubeToPlace.transform.position, Quaternion.identity);
             Destroy(newVfx, 1.5f);
@@ -134,7 +142,8 @@ public class GameController : MonoBehaviour
         if (position.Count > 1)
         {
             cubeToPlace.position = position[UnityEngine.Random.Range(0, position.Count)];
-            GetComponent<AudioSource>().Play();
+            if (nowCountCubes >= 1 && PlayerPrefs.GetString("music") != "No")
+                GetComponent<AudioSource>().Play();
         }
         else if (position.Count == 0)
         {
@@ -176,6 +185,13 @@ public class GameController : MonoBehaviour
             if (Mathf.Abs(Convert.ToInt32(pos.z)) > maxZ)
                 maxZ = Convert.ToInt32(pos.z);
         }
+
+        if (PlayerPrefs.GetInt("score") < maxY - 1)
+            PlayerPrefs.SetInt("score", maxY - 1);
+
+        scoreTxt.text = "<color='#E06055'>best result: " + PlayerPrefs.GetInt("score") + "</color>\npresent result: " + (maxY - 1);
+        nowCountCubes = maxY - 1;
+        PlayerPrefs.SetFloat("nowCountCubes", nowCountCubes);
 
         camMoveToYPosition = 6f + nowCube.y - 1f;
 
