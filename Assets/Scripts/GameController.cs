@@ -43,8 +43,33 @@ public class GameController : MonoBehaviour
     private Transform mainCam;
     private Color toCameraColor;
 
+    private List<GameObject> posibleCubesToCreate = new List<GameObject>();
+
     private void Start()
     {
+        
+        if (PlayerPrefs.GetInt("score") < 5)
+            posibleCubesToCreate.Add(cubesToCreate[0]);
+        if (PlayerPrefs.GetInt("score") >= 5)
+            posibleCubesToCreate.Add(cubesToCreate[1]);
+        if (PlayerPrefs.GetInt("score") >= 10)
+            posibleCubesToCreate.Add(cubesToCreate[2]);
+        if (PlayerPrefs.GetInt("score") >= 20)
+            posibleCubesToCreate.Add(cubesToCreate[3]);
+        if (PlayerPrefs.GetInt("score") >= 30)
+            posibleCubesToCreate.Add(cubesToCreate[4]);
+        if (PlayerPrefs.GetInt("score") >= 50)
+            posibleCubesToCreate.Add(cubesToCreate[5]);
+        if (PlayerPrefs.GetInt("score") >= 70)
+            posibleCubesToCreate.Add(cubesToCreate[6]);
+        if (PlayerPrefs.GetInt("score") >= 100)
+            posibleCubesToCreate.Add(cubesToCreate[7]);
+        if (PlayerPrefs.GetInt("score") >= 130)
+            posibleCubesToCreate.Add(cubesToCreate[8]);
+        if (PlayerPrefs.GetInt("score") >= 200)
+            posibleCubesToCreate.Add(cubesToCreate[9]);
+
+
         PlayerPrefs.SetFloat("nowCountCubes", 0);
         toCameraColor = Camera.main.backgroundColor;
         mainCam = Camera.main.transform;
@@ -73,7 +98,13 @@ public class GameController : MonoBehaviour
                     Destroy(obj);
             }
 
-            GameObject newCube = Instantiate(cubesToCreate[UnityEngine.Random.Range(0, cubesToCreate.Length)], cubeToPlace.position, Quaternion.identity) as GameObject;
+            GameObject createCube = null;
+            if (posibleCubesToCreate.Count == 1)
+                createCube = posibleCubesToCreate[0];
+            else
+                createCube = posibleCubesToCreate[UnityEngine.Random.Range(0, posibleCubesToCreate.Count)];
+            
+            GameObject newCube = Instantiate(createCube, cubeToPlace.position, Quaternion.identity) as GameObject;
 
             newCube.transform.SetParent(allCubes.transform);
             nowCube.setVector(cubeToPlace.position);
