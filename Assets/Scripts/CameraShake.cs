@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     private Transform camTransform;
-    private float shakeDur = 1f, shakeAmount = 0.08f, decreaseFactor = 1.5f;
+    private float shakeDur = 1f, shakeAmount = 0.08f, decreaseFactor = 2f;
 
     private Vector3 originPos;
 
