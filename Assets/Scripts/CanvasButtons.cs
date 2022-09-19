@@ -7,6 +7,7 @@ public class CanvasButtons : MonoBehaviour
 {
 
     public Sprite musicOn, musicOff;
+    public GameObject fonMusic;
 
     public void Start()
     {
@@ -14,30 +15,12 @@ public class CanvasButtons : MonoBehaviour
             GetComponent<Image>().sprite = musicOff;
     }
 
-    IEnumerator StartScenaShop()
+    IEnumerator StartScena(string nameScena)
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);
-            SceneManager.LoadScene("Shop");
-        }
-    }
-
-    IEnumerator CloseScenaShop()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(0.5f);
-            SceneManager.LoadScene("Main");
-        }
-    }
-
-    IEnumerator RestartScena()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(0.5f);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            yield return new WaitForSeconds(0.3f);
+            SceneManager.LoadScene(nameScena);
         }
     }
 
@@ -47,11 +30,11 @@ public class CanvasButtons : MonoBehaviour
         if (PlayerPrefs.GetString("music") != "No")
         {
             GetComponent<AudioSource>().Play();
-            StartCoroutine(RestartScena());
+            StartCoroutine(StartScena("Main"));
         }
         else 
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(StartScena("Main"));
         }
     }
 
@@ -60,7 +43,7 @@ public class CanvasButtons : MonoBehaviour
         if (PlayerPrefs.GetString("music") != "No")
         {
             GetComponent<AudioSource>().Play();
-            StartCoroutine(StartScenaShop());
+            StartCoroutine(StartScena("Shop"));
         }
         else 
         {
@@ -73,7 +56,7 @@ public class CanvasButtons : MonoBehaviour
         if (PlayerPrefs.GetString("music") != "No")
         {
             GetComponent<AudioSource>().Play();
-            StartCoroutine(CloseScenaShop());
+            StartCoroutine(StartScena("Main"));
         }
         else
         {
@@ -95,11 +78,13 @@ public class CanvasButtons : MonoBehaviour
             GetComponent<AudioSource>().Play();
             PlayerPrefs.SetString("music","Yes");
             GetComponent<Image>().sprite = musicOn;
+            fonMusic.GetComponent<AudioSource>().Play();
         }
         else 
         {
             PlayerPrefs.SetString("music", "No");
             GetComponent<Image>().sprite = musicOff;
+            fonMusic.GetComponent<AudioSource>().Stop();
         }
     }
 }
