@@ -11,10 +11,6 @@ public class CameraShake : MonoBehaviour
     {
         camTransform = GetComponent<Transform>();
         originPos = camTransform.localPosition;
-        if (PlayerPrefs.GetString("music") != "No")
-        {
-            GetComponent<AudioSource>().Play();
-        }
     }
 
     private void Update()
