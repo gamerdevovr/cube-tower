@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
 
     public GameObject[] cubesToCreate;
 
-    public GameObject allCubes, vfx, newCubeBell;
+    public GameObject allCubes, vfx, newCubeBell, restartButton, gameOver;
     public GameObject[] canvasStartPage;
     private Rigidbody allCubesRb;
 
@@ -81,9 +81,18 @@ public class GameController : MonoBehaviour
         scoreTxt.text = "<color='#E06055'>best result: " + PlayerPrefs.GetInt("score") + "</color>\npresent result: 0";
     }
 
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
+    }
+
     private void Update()
     {
-        if ((Input.GetMouseButtonDown(0) || Input.touchCount > 0) && cubeToPlace != null && allCubes != null && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+        if ((Input.GetMouseButtonDown(0) || Input.touchCount > 0) && cubeToPlace != null && allCubes != null && !IsPointerOverUIObject())
         {
 
 #if !UNITY_EDITOR
@@ -177,14 +186,18 @@ public class GameController : MonoBehaviour
             if (nowCountCubes >= 1 && PlayerPrefs.GetString("music") != "No")
                 GetComponent<AudioSource>().Play();
         }
-        else if (position.Count == 0)
+        
+        if (position.Count == 1)
+            cubeToPlace.position = position[0];
+        
+        if (position.Count < 1)
         {
             Destroy(cubeToPlace.gameObject);
             IsLose = true;
             StopCoroutine(showCubePlace);
+            restartButton.SetActive(true);
+            gameOver.SetActive(true);
         }
-        else
-            cubeToPlace.position = position[0];
 
     }
 

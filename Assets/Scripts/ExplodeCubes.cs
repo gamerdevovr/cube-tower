@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class ExplodeCubes : MonoBehaviour
 {
-    public GameObject restartButton;
-    public GameObject gameOver, explosion;
+    public GameObject restartButton,gameOver, explosion;
     private bool _collisionSet;
     private float distanceMoveCamera;
 
