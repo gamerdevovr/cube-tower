@@ -87,4 +87,10 @@ public class CanvasButtons : MonoBehaviour
             fonMusic.GetComponent<AudioSource>().Stop();
         }
     }
+
+    public void ClearScore()
+    {
+        PlayerPrefs.SetInt("score", 0);
+        StartCoroutine(StartScena("Main"));
+    }
 }
