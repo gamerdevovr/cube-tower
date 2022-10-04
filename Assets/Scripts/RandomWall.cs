@@ -13,6 +13,7 @@ public class RandomWall : MonoBehaviour
     {
 
         GameObject parrent = gameObject;
+        int allCubes = GameObject.FindWithTag("Cube").transform.childCount;
 
         top = parrent.transform.GetChild(0).gameObject;
         wall_1 = parrent.transform.GetChild(1).gameObject;
@@ -21,7 +22,11 @@ public class RandomWall : MonoBehaviour
         wall_4 = parrent.transform.GetChild(4).gameObject;
 
 
-        wall_1.GetComponent<MeshRenderer>().material = materialsWall[Random.Range(0,2)];
+        if (allCubes % 5 == 0)
+            wall_1.GetComponent<MeshRenderer>().material = materialsWall[0];
+        else
+            wall_1.GetComponent<MeshRenderer>().material = materialsWall[1];
+
         wall_2.GetComponent<MeshRenderer>().material = materialsWall[Random.Range(2, 5)];
         wall_3.GetComponent<MeshRenderer>().material = materialsWall[Random.Range(2, 5)];
         wall_4.GetComponent<MeshRenderer>().material = materialsWall[Random.Range(2, 5)];
