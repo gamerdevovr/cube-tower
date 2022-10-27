@@ -5,6 +5,7 @@ public class ExplodeCubes : MonoBehaviour
     public GameObject restartButton,gameOver, explosion;
     private bool _collisionSet;
     private float distanceMoveCamera;
+    public GameObject ground;
 
 
     private void OnCollisionEnter(Collision collision)
@@ -38,6 +39,8 @@ public class ExplodeCubes : MonoBehaviour
 
             Destroy(collision.gameObject);
             _collisionSet = true;
+
+            ground.transform.localScale = new Vector3(3f, 0.5f, 3f);
         }
     }
 }

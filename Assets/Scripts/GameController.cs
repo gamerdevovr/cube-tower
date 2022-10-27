@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
 
     private bool IsLose, firstCube;
 
+    public GameObject ground;
+
     private List<Vector3> allCubesPosition = new List<Vector3>
     {
         new Vector3(0, 0, 0),
@@ -146,10 +148,11 @@ public class GameController : MonoBehaviour
         }
 
         if (!IsLose &&  allCubesRb.velocity.magnitude > 0.1f)
-        {
+        {           
             Destroy(cubeToPlace.gameObject);
             IsLose = true;
             StopCoroutine(showCubePlace);
+            //StartCoroutine(ScaleGround());
         }
 
         mainCam.localPosition = Vector3.MoveTowards(mainCam.localPosition, new Vector3(mainCam.localPosition.x, camMoveToYPosition, mainCam.localPosition.z), camMoveSpeed * Time.deltaTime);
@@ -166,6 +169,12 @@ public class GameController : MonoBehaviour
 
             yield return new WaitForSeconds(cubeChangePlaceSpeed);
         }
+    }
+
+    IEnumerator ScaleGround()
+    {
+        yield return new WaitForSeconds(1.2f);
+        ground.transform.localScale = new Vector3(3f, 0.5f, 3f);
     }
 
     private void SpawnPosition()
@@ -208,6 +217,7 @@ public class GameController : MonoBehaviour
             StopCoroutine(showCubePlace);
             restartButton.SetActive(true);
             gameOver.SetActive(true);
+            //StartCoroutine(ScaleGround());
         }
 
     }
