@@ -93,4 +93,10 @@ public class CanvasButtons : MonoBehaviour
         PlayerPrefs.SetInt("score", 0);
         StartCoroutine(StartScena("Main"));
     }
+
+    public void MaxResult()
+    {
+        PlayerPrefs.SetInt("score", 201);
+        StartCoroutine(StartScena("Main"));
+    }
 }
