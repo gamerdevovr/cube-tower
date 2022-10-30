@@ -46,6 +46,8 @@ public class GameController : MonoBehaviour
 
     private List<GameObject> posibleCubesToCreate = new List<GameObject>();
 
+    private List<int> AddedCubes = new List<int>();
+
     private void Start()
     {
 
@@ -69,6 +71,8 @@ public class GameController : MonoBehaviour
             posibleCubesToCreate.Add(cubesToCreate[8]);
         if (PlayerPrefs.GetInt("score") >= 200)
             posibleCubesToCreate.Add(cubesToCreate[9]);
+
+        AddedCubes.Add(1);
 
         StartCoroutine(AddPosibleCubesToCreate());
 
@@ -155,26 +159,51 @@ public class GameController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(2);
-            if (PlayerPrefs.GetInt("score") < 5)
-                posibleCubesToCreate.Add(cubesToCreate[0]);
-            if (PlayerPrefs.GetInt("score") >= 5)
+            if (PlayerPrefs.GetInt("score") >= 5 && !AddedCubes.Contains(5))
+            {
                 posibleCubesToCreate.Add(cubesToCreate[1]);
-            if (PlayerPrefs.GetInt("score") >= 10)
+                AddedCubes.Add(5);
+            }
+            if (PlayerPrefs.GetInt("score") >= 10 && !AddedCubes.Contains(10))
+            {
                 posibleCubesToCreate.Add(cubesToCreate[2]);
-            if (PlayerPrefs.GetInt("score") >= 20)
+                AddedCubes.Add(10);
+            }
+            if (PlayerPrefs.GetInt("score") >= 20 && !AddedCubes.Contains(20))
+            {
                 posibleCubesToCreate.Add(cubesToCreate[3]);
-            if (PlayerPrefs.GetInt("score") >= 30)
+                AddedCubes.Add(20);
+            }
+            if (PlayerPrefs.GetInt("score") >= 30 && !AddedCubes.Contains(30))
+            {
                 posibleCubesToCreate.Add(cubesToCreate[4]);
-            if (PlayerPrefs.GetInt("score") >= 50)
+                AddedCubes.Add(30);
+            }
+            if (PlayerPrefs.GetInt("score") >= 50 && !AddedCubes.Contains(50))
+            {
                 posibleCubesToCreate.Add(cubesToCreate[5]);
-            if (PlayerPrefs.GetInt("score") >= 70)
+                AddedCubes.Add(50);
+            }
+            if (PlayerPrefs.GetInt("score") >= 70 && !AddedCubes.Contains(70))
+            {
                 posibleCubesToCreate.Add(cubesToCreate[6]);
-            if (PlayerPrefs.GetInt("score") >= 100)
+                AddedCubes.Add(70);
+            }
+            if (PlayerPrefs.GetInt("score") >= 100 && !AddedCubes.Contains(100))
+            {
                 posibleCubesToCreate.Add(cubesToCreate[7]);
-            if (PlayerPrefs.GetInt("score") >= 130)
+                AddedCubes.Add(100);
+            }
+            if (PlayerPrefs.GetInt("score") >= 130 && !AddedCubes.Contains(130))
+            {
                 posibleCubesToCreate.Add(cubesToCreate[8]);
-            if (PlayerPrefs.GetInt("score") >= 200)
+                AddedCubes.Add(130);
+            }
+            if (PlayerPrefs.GetInt("score") >= 200 && !AddedCubes.Contains(200))
+            {
                 posibleCubesToCreate.Add(cubesToCreate[9]);
+                AddedCubes.Add(200);
+            }
         }
     }
 
