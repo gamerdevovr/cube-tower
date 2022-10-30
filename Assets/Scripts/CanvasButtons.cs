@@ -11,8 +11,13 @@ public class CanvasButtons : MonoBehaviour
 
     public void Start()
     {
-        if (PlayerPrefs.GetString("music") != "Yes" && gameObject.name == "Music")
-            GetComponent<Image>().sprite = musicOff;
+        if (gameObject.name.Equals("Music"))
+        {
+            if (!PlayerPrefs.GetString("music").Equals("Yes") && PlayerPrefs.GetString("music").Equals("No"))
+                GetComponent<Image>().sprite = musicOff;
+            else
+                GetComponent<Image>().sprite = musicOn;
+        }
     }
 
     IEnumerator StartScena(string nameScena)

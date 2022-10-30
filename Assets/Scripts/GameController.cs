@@ -43,7 +43,6 @@ public class GameController : MonoBehaviour
     private int prevCountMaxHorizontal, nowCountCubes = 0;
     private Coroutine showCubePlace;
     private Transform mainCam;
-    private Color toCameraColor;
 
     private List<GameObject> posibleCubesToCreate = new List<GameObject>();
 
@@ -71,6 +70,8 @@ public class GameController : MonoBehaviour
         if (PlayerPrefs.GetInt("score") >= 200)
             posibleCubesToCreate.Add(cubesToCreate[9]);
 
+        StartCoroutine(AddPosibleCubesToCreate());
+
         //posibleCubesToCreate.Add(cubesToCreate[0]);
         //posibleCubesToCreate.Add(cubesToCreate[1]);
         //posibleCubesToCreate.Add(cubesToCreate[2]);
@@ -84,7 +85,6 @@ public class GameController : MonoBehaviour
 
 
         PlayerPrefs.SetFloat("nowCountCubes", 0);
-        toCameraColor = Camera.main.backgroundColor;
         mainCam = Camera.main.transform;
         camMoveToYPosition = 6f + nowCube.y - 1f;
 
@@ -92,15 +92,6 @@ public class GameController : MonoBehaviour
         showCubePlace = StartCoroutine(ShowCubePlace());
 
         scoreTxt.text = "<color='#E06055'>best result: " + PlayerPrefs.GetInt("score") + "</color>\npresent result: 0";
-    }
-
-    private bool IsPointerOverUIObject()
-    {
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        return results.Count > 0;
     }
 
     private void Update()
@@ -157,8 +148,34 @@ public class GameController : MonoBehaviour
 
         mainCam.localPosition = Vector3.MoveTowards(mainCam.localPosition, new Vector3(mainCam.localPosition.x, camMoveToYPosition, mainCam.localPosition.z), camMoveSpeed * Time.deltaTime);
 
-        if (Camera.main.backgroundColor != toCameraColor)
-            Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, toCameraColor, Time.deltaTime / 1.5f);
+    }
+
+    IEnumerator AddPosibleCubesToCreate()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2);
+            if (PlayerPrefs.GetInt("score") < 5)
+                posibleCubesToCreate.Add(cubesToCreate[0]);
+            if (PlayerPrefs.GetInt("score") >= 5)
+                posibleCubesToCreate.Add(cubesToCreate[1]);
+            if (PlayerPrefs.GetInt("score") >= 10)
+                posibleCubesToCreate.Add(cubesToCreate[2]);
+            if (PlayerPrefs.GetInt("score") >= 20)
+                posibleCubesToCreate.Add(cubesToCreate[3]);
+            if (PlayerPrefs.GetInt("score") >= 30)
+                posibleCubesToCreate.Add(cubesToCreate[4]);
+            if (PlayerPrefs.GetInt("score") >= 50)
+                posibleCubesToCreate.Add(cubesToCreate[5]);
+            if (PlayerPrefs.GetInt("score") >= 70)
+                posibleCubesToCreate.Add(cubesToCreate[6]);
+            if (PlayerPrefs.GetInt("score") >= 100)
+                posibleCubesToCreate.Add(cubesToCreate[7]);
+            if (PlayerPrefs.GetInt("score") >= 130)
+                posibleCubesToCreate.Add(cubesToCreate[8]);
+            if (PlayerPrefs.GetInt("score") >= 200)
+                posibleCubesToCreate.Add(cubesToCreate[9]);
+        }
     }
 
     IEnumerator ShowCubePlace()
@@ -175,6 +192,15 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
         ground.transform.localScale = new Vector3(3f, 0.5f, 3f);
+    }
+
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 
     private void SpawnPosition()
@@ -269,16 +295,6 @@ public class GameController : MonoBehaviour
             prevCountMaxHorizontal = maxHor;
         }
 
-        if (maxY >= 15)
-            toCameraColor = bgColors[4];
-        else if (maxY >= 12)
-            toCameraColor = bgColors[3];
-        else if (maxY >= 9)
-            toCameraColor = bgColors[2];
-        else if (maxY >= 6)
-            toCameraColor = bgColors[1];
-        else if (maxY >= 3)
-            toCameraColor = bgColors[0];
     }
 
 }

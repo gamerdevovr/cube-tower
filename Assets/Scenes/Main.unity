@@ -592,8 +592,8 @@ GameObject:
   - component: {fileID: 462400630}
   - component: {fileID: 462400629}
   - component: {fileID: 462400628}
-  - component: {fileID: 462400627}
   - component: {fileID: 462400631}
+  - component: {fileID: 462400632}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -621,21 +621,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &462400627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 462400625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610265b2e5e051445b9145fc4cb6df63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicOn: {fileID: 0}
-  musicOff: {fileID: 0}
-  fonMusic: {fileID: 0}
 --- !u!114 &462400628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +665,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 462400627}
+      - m_Target: {fileID: 462400632}
         m_TargetAssemblyTypeName: CanvasButtons, Assembly-CSharp
         m_MethodName: LoadShop
         m_Mode: 1
@@ -737,12 +722,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462400625}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 325f66fe814a7a748ade8626604f2c5b, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -826,6 +811,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &462400632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462400625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610265b2e5e051445b9145fc4cb6df63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicOn: {fileID: 21300000, guid: 907695514a29edb45976e2c46be9c37f, type: 3}
+  musicOff: {fileID: 21300000, guid: 633629b81fc89464fb3d4515196ab345, type: 3}
+  fonMusic: {fileID: 465080201}
 --- !u!1 &465080201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1688,7 @@ GameObject:
   - component: {fileID: 1104453633}
   - component: {fileID: 1104453632}
   - component: {fileID: 1104453631}
-  - component: {fileID: 1104453630}
+  - component: {fileID: 1104453634}
   m_Layer: 5
   m_Name: ResetResult
   m_TagString: Untagged
@@ -1716,21 +1716,6 @@ RectTransform:
   m_AnchoredPosition: {x: 210, y: -101}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1104453630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104453628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610265b2e5e051445b9145fc4cb6df63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicOn: {fileID: 0}
-  musicOff: {fileID: 0}
-  fonMusic: {fileID: 0}
 --- !u!114 &1104453631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1775,7 +1760,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1104453630}
+      - m_Target: {fileID: 1104453634}
         m_TargetAssemblyTypeName: CanvasButtons, Assembly-CSharp
         m_MethodName: ClearScore
         m_Mode: 1
@@ -1825,6 +1810,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104453628}
   m_CullTransparentMesh: 1
+--- !u!114 &1104453634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104453628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610265b2e5e051445b9145fc4cb6df63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicOn: {fileID: 0}
+  musicOff: {fileID: 0}
+  fonMusic: {fileID: 0}
 --- !u!1001 &1108326334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2568,8 +2568,8 @@ GameObject:
   - component: {fileID: 2015725332}
   - component: {fileID: 2015725331}
   - component: {fileID: 2015725330}
-  - component: {fileID: 2015725329}
   - component: {fileID: 2015725333}
+  - component: {fileID: 2015725334}
   m_Layer: 5
   m_Name: Facebook
   m_TagString: Untagged
@@ -2597,21 +2597,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2015725329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015725327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610265b2e5e051445b9145fc4cb6df63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicOn: {fileID: 0}
-  musicOff: {fileID: 0}
-  fonMusic: {fileID: 0}
 --- !u!114 &2015725330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2656,7 +2641,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2015725329}
+      - m_Target: {fileID: 2015725334}
         m_TargetAssemblyTypeName: CanvasButtons, Assembly-CSharp
         m_MethodName: LoadFacebook
         m_Mode: 1
@@ -2713,11 +2698,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2015725327}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 325f66fe814a7a748ade8626604f2c5b, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2802,6 +2787,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2015725334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015725327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610265b2e5e051445b9145fc4cb6df63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicOn: {fileID: 21300000, guid: 907695514a29edb45976e2c46be9c37f, type: 3}
+  musicOff: {fileID: 21300000, guid: 633629b81fc89464fb3d4515196ab345, type: 3}
+  fonMusic: {fileID: 465080201}
 --- !u!1 &2041699748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,8 +2814,8 @@ GameObject:
   - component: {fileID: 2041699753}
   - component: {fileID: 2041699752}
   - component: {fileID: 2041699751}
-  - component: {fileID: 2041699750}
   - component: {fileID: 2041699754}
+  - component: {fileID: 2041699755}
   m_Layer: 5
   m_Name: Music
   m_TagString: Untagged
@@ -2843,21 +2843,6 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2041699750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041699748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610265b2e5e051445b9145fc4cb6df63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicOn: {fileID: 21300000, guid: 79488a281ed46cf4c8fbff6f4edb60fb, type: 3}
-  musicOff: {fileID: 21300000, guid: 1a438f9ea21ca5c428b6a819f16e1739, type: 3}
-  fonMusic: {fileID: 465080201}
 --- !u!114 &2041699751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2902,7 +2887,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2041699750}
+      - m_Target: {fileID: 2041699755}
         m_TargetAssemblyTypeName: CanvasButtons, Assembly-CSharp
         m_MethodName: MusicWork
         m_Mode: 1
@@ -2959,12 +2944,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041699748}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 325f66fe814a7a748ade8626604f2c5b, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3048,6 +3033,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2041699755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041699748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610265b2e5e051445b9145fc4cb6df63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicOn: {fileID: 21300000, guid: 79488a281ed46cf4c8fbff6f4edb60fb, type: 3}
+  musicOff: {fileID: 21300000, guid: 1a438f9ea21ca5c428b6a819f16e1739, type: 3}
+  fonMusic: {fileID: 465080201}
 --- !u!1 &2063312458
 GameObject:
   m_ObjectHideFlags: 0
@@ -3060,7 +3060,7 @@ GameObject:
   - component: {fileID: 2063312463}
   - component: {fileID: 2063312462}
   - component: {fileID: 2063312461}
-  - component: {fileID: 2063312460}
+  - component: {fileID: 2063312464}
   m_Layer: 5
   m_Name: MaxResult
   m_TagString: Untagged
@@ -3088,21 +3088,6 @@ RectTransform:
   m_AnchoredPosition: {x: 321.4, y: -101}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2063312460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063312458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610265b2e5e051445b9145fc4cb6df63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicOn: {fileID: 0}
-  musicOff: {fileID: 0}
-  fonMusic: {fileID: 0}
 --- !u!114 &2063312461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3147,7 +3132,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2063312460}
+      - m_Target: {fileID: 2063312464}
         m_TargetAssemblyTypeName: CanvasButtons, Assembly-CSharp
         m_MethodName: MaxResult
         m_Mode: 1
@@ -3197,6 +3182,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063312458}
   m_CullTransparentMesh: 1
+--- !u!114 &2063312464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063312458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610265b2e5e051445b9145fc4cb6df63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicOn: {fileID: 0}
+  musicOff: {fileID: 0}
+  fonMusic: {fileID: 0}
 --- !u!1001 &6267270169683883107
 PrefabInstance:
   m_ObjectHideFlags: 0
