@@ -304,3 +304,228 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2737.556047 seconds.
+  path: Assets/Clouds/Cloud_L.obj
+  artifactKey: Guid(08d3369a8e3476945acda79f3ca212c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/Cloud_L.obj using Guid(08d3369a8e3476945acda79f3ca212c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c18c5c8b92e439f913f415c3d8ad19d') in 0.399898 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Clouds/CloudMaterial.mat
+  artifactKey: Guid(2ee53c68d1b02d342a42d00a5e0243aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/CloudMaterial.mat using Guid(2ee53c68d1b02d342a42d00a5e0243aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '577eb14388e0beb5058c9e575ee728ca') in 0.238367 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 325.166992 seconds.
+  path: Assets/Clouds/test
+  artifactKey: Guid(943d80031b4434a41a4b86ed36823aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test using Guid(943d80031b4434a41a4b86ed36823aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcc9de126c9758d962c6ca488f4d6a38') in 0.004913 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.240125 seconds.
+  path: Assets/Clouds/test/1
+  artifactKey: Guid(5d166507267d4ec46994df97a73fbdce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1 using Guid(5d166507267d4ec46994df97a73fbdce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c14571808fda42d4610c9e7a6ec4579a') in 0.004256 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.235808 seconds.
+  path: Assets/Clouds/test/1/Cloud model.max
+  artifactKey: Guid(1e7c9988aee014c499334b4f63432fb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Cloud model.max using Guid(1e7c9988aee014c499334b4f63432fb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3a58502b0b19abbfe33fa21469052fe') in 0.006848 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 173.705795 seconds.
+  path: Assets/Clouds/test/1/Cloud model.obj
+  artifactKey: Guid(f9f3af0b04a06e249965cdefc0452b58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Cloud model.obj using Guid(f9f3af0b04a06e249965cdefc0452b58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d38c0dee82cb5d6a148ab3625dd5076') in 0.143191 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.695096 seconds.
+  path: Assets/Clouds/test/1/Cloud model.obj
+  artifactKey: Guid(f9f3af0b04a06e249965cdefc0452b58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Cloud model.obj using Guid(f9f3af0b04a06e249965cdefc0452b58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '223c35a6d4b374ec0c1c904a78d9d220') in 0.108430 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Clouds/test/1/Sphere111Mat.mat
+  artifactKey: Guid(e3c3e11f9d0b9cc41ab31afe53370ac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere111Mat.mat using Guid(e3c3e11f9d0b9cc41ab31afe53370ac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1304568e25769d3db1adb1d06a56bf9c') in 0.009866 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Clouds/test/1/Sphere109Mat.mat
+  artifactKey: Guid(a6b6cc118601b7d429d32dfecad7c0d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere109Mat.mat using Guid(a6b6cc118601b7d429d32dfecad7c0d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81c25570e64ca027fc98cb0fb5eb7261') in 0.009793 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Clouds/test/1/Sphere128Mat.mat
+  artifactKey: Guid(36e04f1c301efa84bb5f08eafa77d1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere128Mat.mat using Guid(36e04f1c301efa84bb5f08eafa77d1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5cd809694c5bd096a897e1b826ac188') in 0.014056 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Clouds/test/1/Sphere108Mat.mat
+  artifactKey: Guid(31357618be3a8cf438f62549d280fb18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere108Mat.mat using Guid(31357618be3a8cf438f62549d280fb18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bcc5fd5c1945079ccef88a8f398c3ad') in 0.010151 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Clouds/test/1/Sphere129Mat.mat
+  artifactKey: Guid(4504baa45c2dc504baf8f3bf7965193d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere129Mat.mat using Guid(4504baa45c2dc504baf8f3bf7965193d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcecb94915c1d4fbaae4491b0b043bb3') in 0.009085 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Clouds/test/1/Sphere106Mat.mat
+  artifactKey: Guid(99306b4b1e795ea47b66bb38a8d72928) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere106Mat.mat using Guid(99306b4b1e795ea47b66bb38a8d72928) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5442367cf604c1c07940d12519df8585') in 0.013696 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Clouds/test/1/Sphere112Mat.mat
+  artifactKey: Guid(5f2a4c5a909e7ad468552aa07942036e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere112Mat.mat using Guid(5f2a4c5a909e7ad468552aa07942036e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd1c8a653c9dc5fba8092af88510489b') in 0.010644 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Clouds/test/1/Sphere116Mat.mat
+  artifactKey: Guid(a404b5812a275cc44bd71fda0c59f49d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere116Mat.mat using Guid(a404b5812a275cc44bd71fda0c59f49d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22b5c1fed34983c09e4d1fa3adb1b5a4') in 0.009746 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Clouds/test/1/Sphere110Mat.mat
+  artifactKey: Guid(e21f3b14e63d0f34bb79da86fd8515d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere110Mat.mat using Guid(e21f3b14e63d0f34bb79da86fd8515d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '574dc9f3317ed2c3217b6e2e00269bb6') in 0.009107 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Clouds/test/1/Sphere126Mat.mat
+  artifactKey: Guid(e7cb6471d1b20a54799bd353667148a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere126Mat.mat using Guid(e7cb6471d1b20a54799bd353667148a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb14454b3aa9d3c6054865691cee59a9') in 0.009610 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Clouds/test/1/Sphere120Mat.mat
+  artifactKey: Guid(b8e4c1c4acd75f5489a278e672416b47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere120Mat.mat using Guid(b8e4c1c4acd75f5489a278e672416b47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f9c86a434b4e99798bae4074130ec3f') in 0.010104 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Clouds/test/1/Sphere107Mat.mat
+  artifactKey: Guid(c4be41223ab54804f9c9d53505253702) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere107Mat.mat using Guid(c4be41223ab54804f9c9d53505253702) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40fd0d8e763ea93e9de9fcc0e4c6ecf7') in 0.012654 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Clouds/test/1/Sphere113Mat.mat
+  artifactKey: Guid(f89f10d4f076e3a439d0c0f172e7829b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere113Mat.mat using Guid(f89f10d4f076e3a439d0c0f172e7829b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '505bef7b52cd387f8367028f4eb92c96') in 0.008387 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Clouds/test/1/Sphere114Mat.mat
+  artifactKey: Guid(24de8b388160c384da5d0be4e5867705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere114Mat.mat using Guid(24de8b388160c384da5d0be4e5867705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e5443610134a4b1b1206f001b52b23e') in 0.014764 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Clouds/test/1/Sphere127Mat.mat
+  artifactKey: Guid(4227cbc551f33c448bae6822f271173a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Clouds/test/1/Sphere127Mat.mat using Guid(4227cbc551f33c448bae6822f271173a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '817af0c431beeef2675d5aa7375787c4') in 0.009203 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002382 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.866 seconds
+Domain Reload Profiling:
+	ReloadAssembly (866ms)
+		BeginReloadAssembly (108ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (37ms)
+		EndReloadAssembly (680ms)
+			LoadAssemblies (61ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (206ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (342ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (16ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (56ms)
+				ProcessInitializeOnLoadAttributes (194ms)
+				ProcessInitializeOnLoadMethodAttributes (73ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.70 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3605 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 56 unused Assets / (1.9 MB). Loaded Objects now: 4239.
+Memory consumption went from 184.5 MB to 182.6 MB.
+Total: 3.153300 ms (FindLiveObjects: 0.358600 ms CreateObjectMapping: 0.164400 ms MarkObjects: 2.235700 ms  DeleteObjects: 0.393800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 9.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 56 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 56 unused Assets / (1.9 MB). Loaded Objects now: 4239.
+Memory consumption went from 113.4 MB to 111.5 MB.
+Total: 365.809800 ms (FindLiveObjects: 0.480000 ms CreateObjectMapping: 0.451800 ms MarkObjects: 364.214000 ms  DeleteObjects: 0.662200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 5.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 56 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 56 unused Assets / (1.9 MB). Loaded Objects now: 4239.
+Memory consumption went from 113.4 MB to 111.5 MB.
+Total: 3.277900 ms (FindLiveObjects: 0.217500 ms CreateObjectMapping: 0.120700 ms MarkObjects: 2.571300 ms  DeleteObjects: 0.367900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
