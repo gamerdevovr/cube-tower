@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour
         if (PlayerPrefs.GetInt("score") >= 200)
             posibleCubesToCreate.Add(cubesToCreate[9]);
 
-        AddedCubes.Add(1);
+        AddedCubes.Add(0);
 
         StartCoroutine(AddPosibleCubesToCreate());
 
