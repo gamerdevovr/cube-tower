@@ -6,7 +6,7 @@ Library: lib_burst_generated
 --dump=Function
 --float-precision=Standard
 --disable-warnings=BC1370
---compilation-defines=UNITY_2021_3_12
+--compilation-defines=UNITY_2021_3_14
 --compilation-defines=UNITY_2021_3
 --compilation-defines=UNITY_2021
 --compilation-defines=UNITY_5_3_OR_NEWER
@@ -36,7 +36,6 @@ Library: lib_burst_generated
 --compilation-defines=USE_SEARCH_MODULE
 --compilation-defines=USE_PROPERTY_DATABASE
 --compilation-defines=USE_SEARCH_EXTENSION_API
---compilation-defines=SCENE_TEMPLATE_MODULE
 --compilation-defines=ENABLE_AR
 --compilation-defines=ENABLE_AUDIO
 --compilation-defines=ENABLE_CACHING
@@ -116,15 +115,15 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_TIMELINE
 --compilation-defines=ENABLE_LEGACY_INPUT_MANAGER
 --compilation-defines=UNITY_POST_PROCESSING_STACK_V2
+--compilation-defines=ENABLE_VR_MODULE
+--compilation-defines=ENABLE_XR_MODULE
+--compilation-defines=CSHARP_7_OR_LATER
+--compilation-defines=CSHARP_7_3_OR_NEWER
 --compilation-defines=PACKAGE_PHYSICS
 --compilation-defines=PACKAGE_PHYSICS2D
 --compilation-defines=PACKAGE_TILEMAP
 --compilation-defines=PACKAGE_ANIMATION
 --compilation-defines=PACKAGE_UITOOLKIT
---compilation-defines=CSHARP_7_OR_LATER
---compilation-defines=CSHARP_7_3_OR_NEWER
---compilation-defines=ENABLE_VR_MODULE
---compilation-defines=ENABLE_XR_MODULE
 --compilation-defines=ENABLE_BURST_1_0_0_OR_NEWER
 --compilation-defines=USING_ANIMATION_MODULE
 --compilation-defines=USING_PHYSICS2D_MODULE
@@ -132,8 +131,8 @@ Library: lib_burst_generated
 --compilation-defines=TIMELINE_FRAMEACCURATE
 --generate-link-xml=Temp\burst.link.xml
 --output=D:\develop\Unity\projects\cube-tower\Temp\StagingArea\tempburstlibs\armeabi-v7a\lib_burst_generated
---root-assembly=D:\develop\Unity\projects\cube-tower\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=D:\develop\Unity\projects\cube-tower\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Core.Runtime.dll
+--root-assembly=D:\develop\Unity\projects\cube-tower\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=D:\develop\Unity\projects\cube-tower\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=D:\develop\Unity\projects\cube-tower\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
 --root-assembly=D:\develop\Unity\projects\cube-tower\Temp\StagingArea\Data\Managed\Unity.Services.Core.Telemetry.dll
