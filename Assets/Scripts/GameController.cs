@@ -26,6 +26,8 @@ public class GameController : MonoBehaviour
 
     public GameObject ground;
 
+    public GameObject bestResult;
+
     private List<Vector3> allCubesPosition = new List<Vector3>
     {
         new Vector3(0, 0, 0),
@@ -75,18 +77,6 @@ public class GameController : MonoBehaviour
         AddedCubes.Add(0);
 
         StartCoroutine(AddPosibleCubesToCreate());
-
-        //posibleCubesToCreate.Add(cubesToCreate[0]);
-        //posibleCubesToCreate.Add(cubesToCreate[1]);
-        //posibleCubesToCreate.Add(cubesToCreate[2]);
-        //posibleCubesToCreate.Add(cubesToCreate[3]);
-        //posibleCubesToCreate.Add(cubesToCreate[4]);
-        //posibleCubesToCreate.Add(cubesToCreate[5]);
-        //posibleCubesToCreate.Add(cubesToCreate[6]);
-        //posibleCubesToCreate.Add(cubesToCreate[7]);
-        //posibleCubesToCreate.Add(cubesToCreate[8]);
-        //posibleCubesToCreate.Add(cubesToCreate[9]);
-
 
         PlayerPrefs.SetFloat("nowCountCubes", 0);
         mainCam = Camera.main.transform;
@@ -163,6 +153,7 @@ public class GameController : MonoBehaviour
             {
                 posibleCubesToCreate.Add(cubesToCreate[1]);
                 AddedCubes.Add(5);
+                bestResult.GetComponent<Animation>().Play("BestResult");
             }
             if (PlayerPrefs.GetInt("score") >= 10 && !AddedCubes.Contains(10))
             {
