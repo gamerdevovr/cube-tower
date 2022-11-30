@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Island
+  m_Name: Island_30.11
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
   - _METALLICGLOSSMAP
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 10bf702fb63662b43982c3db7889f722, type: 3}
+        m_Texture: {fileID: 2800000, guid: 77b32882308562948bd3ff688d9c292c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -44,19 +44,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 567735f7c8246814d95e83e786de00dd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 517ebfe6adaa50346964d83998cea27e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: ebb6084f0218005428abd24e2c8734fd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 987aef931f66fc14ebfb04baddcb1912, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: dd8eb409d540f364d9cad02ac16c1336, type: 3}
+        m_Texture: {fileID: 2800000, guid: dca447a7df4ef0440ac0378d613acd2c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: 1fdfb82416d2d2b45b63a3a8eec35f2d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6513d604d1283d446889debff0c6515e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
