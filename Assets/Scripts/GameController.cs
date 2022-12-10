@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public Transform cubeToPlace;
     private float camMoveToYPosition, camMoveSpeed = 2f;
 
+
     public Text scoreTxt;
 
     public GameObject[] cubesToCreate;
@@ -170,7 +171,6 @@ public class GameController : MonoBehaviour
         }
 
         mainCam.localPosition = Vector3.MoveTowards(mainCam.localPosition, new Vector3(mainCam.localPosition.x, camMoveToYPosition, mainCam.localPosition.z), camMoveSpeed * Time.deltaTime);
-
     }
 
     IEnumerator AddPosibleCubesToCreate()
