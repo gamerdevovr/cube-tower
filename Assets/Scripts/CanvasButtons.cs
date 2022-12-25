@@ -7,7 +7,7 @@ public class CanvasButtons : MonoBehaviour
 {
 
     public Sprite musicOn, musicOff;
-    public GameObject fonMusic;
+    public GameObject fonMusic, socialPodlozhka, socialClose, faceBook, twitter;
 
     public void Start()
     {
@@ -40,32 +40,6 @@ public class CanvasButtons : MonoBehaviour
         else 
         {
             StartCoroutine(StartScena("Main"));
-        }
-    }
-
-    public void LoadShop()
-    {
-        if (PlayerPrefs.GetString("music") != "No")
-        {
-            GetComponent<AudioSource>().Play();
-            StartCoroutine(StartScena("Shop"));
-        }
-        else 
-        {
-            SceneManager.LoadScene("Shop");
-        }
-    }
-
-    public void CloseShop()
-    {
-        if (PlayerPrefs.GetString("music") != "No")
-        {
-            GetComponent<AudioSource>().Play();
-            StartCoroutine(StartScena("Main"));
-        }
-        else
-        {
-            SceneManager.LoadScene("Main");
         }
     }
 
@@ -103,5 +77,25 @@ public class CanvasButtons : MonoBehaviour
     {
         PlayerPrefs.SetInt("score", 201);
         StartCoroutine(StartScena("Main"));
+    }
+
+    public void OpenSocial()
+    {
+        if (PlayerPrefs.GetString("music") != "No")
+            GetComponent<AudioSource>().Play();
+        socialPodlozhka.SetActive(true);
+        socialClose.SetActive(true);
+        faceBook.SetActive(true);
+        twitter.SetActive(true);
+    }
+
+    public void CloseSocial()
+    {
+        if (PlayerPrefs.GetString("music") != "No")
+            GetComponent<AudioSource>().Play();
+        socialPodlozhka.SetActive(false);
+        socialClose.SetActive(false);
+        faceBook.SetActive(false);
+        twitter.SetActive(false);
     }
 }
