@@ -2845,6 +2845,7 @@ GameObject:
   - component: {fileID: 976622059}
   - component: {fileID: 976622058}
   - component: {fileID: 976622061}
+  - component: {fileID: 976622062}
   m_Layer: 5
   m_Name: FaceBook
   m_TagString: Untagged
@@ -2915,7 +2916,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 976622059}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 976622062}
+        m_TargetAssemblyTypeName: FaceBook, Assembly-CSharp
+        m_MethodName: Share
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &976622059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3050,6 +3063,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &976622062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976622056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81b6f6175926d34f8b94d582d24eddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &980714235
 GameObject:
   m_ObjectHideFlags: 0
