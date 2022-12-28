@@ -50,6 +50,7 @@ public class FaceBook : MonoBehaviour
 
     public void Share()
     {
-        FB.ShareLink(new System.Uri("https://developers.facebook.com/"));
+        string title = ". I've had some success in Sky Cubes - " + PlayerPrefs.GetInt("score").ToString() + " cubes uphill! Who will beat my record?";
+        FB.ShareLink(new System.Uri("https://ibb.co/7Qvd4X3"), contentTitle: title);
     }
 }
