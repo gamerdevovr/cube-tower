@@ -79,7 +79,7 @@ public class CanvasButtons : MonoBehaviour
         StartCoroutine(StartScena("Main"));
     }
 
-    public void OpenSocial()
+    public void OpenShare()
     {
         if (PlayerPrefs.GetString("music") != "No")
             GetComponent<AudioSource>().Play();
