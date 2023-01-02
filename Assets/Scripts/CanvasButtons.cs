@@ -2,12 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.IO;
 
 public class CanvasButtons : MonoBehaviour
 {
 
     public Sprite musicOn, musicOff;
-    public GameObject fonMusic, socialPodlozhka, socialClose, faceBook, twitter;
+    public GameObject fonMusic;
+    public GameObject bestResult;
+    private string _message;
 
     public void Start()
     {
@@ -79,23 +82,43 @@ public class CanvasButtons : MonoBehaviour
         StartCoroutine(StartScena("Main"));
     }
 
-    public void OpenShare()
+    public void TapShare()
     {
-        if (PlayerPrefs.GetString("music") != "No")
-            GetComponent<AudioSource>().Play();
-        socialPodlozhka.SetActive(true);
-        socialClose.SetActive(true);
-        faceBook.SetActive(true);
-        twitter.SetActive(true);
+        _message = "I've had some success in Sky Cubes - " + PlayerPrefs.GetInt("score").ToString() + " cubes uphill!!! Who will beat my record?";
+        bestResult.SetActive(true);
+        TakeScreenshotAndShare(_message);
+        //StartCoroutine(TakeScreenshotAndShare(_message));    
     }
 
-    public void CloseSocial()
+    private IEnumerator TakeScreenshotAndShare(string Message)
     {
-        if (PlayerPrefs.GetString("music") != "No")
-            GetComponent<AudioSource>().Play();
-        socialPodlozhka.SetActive(false);
-        socialClose.SetActive(false);
-        faceBook.SetActive(false);
-        twitter.SetActive(false);
+        yield return new WaitForEndOfFrame();
+
+        Texture2D ss = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+        ss.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        ss.Apply();
+
+        string filePath = Path.Combine(Application.temporaryCachePath, "shared img.png");
+        File.WriteAllBytes(filePath, ss.EncodeToPNG());
+
+        // To avoid memory leaks
+        Destroy(ss);
+
+        new NativeShare().AddFile(filePath)
+            .SetSubject("New result in Sky Cubes").SetText(Message).SetUrl("https://www.facebook.com/profile.php?id=100088822786759")
+            .SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
+            .Share();
+        
+        bestResult.SetActive(false);
+
     }
+
+    //private IEnumerable ShowBestResultforShare(GameObject bRes)
+    //{
+    //    Debug.Log(bRes.name);
+    //    //bRes.SetActive(true);
+    //    //yield return new WaitForSeconds(2);
+    //    //yield return StartCoroutine(TakeScreenshotAndShare(_message));
+    //    //bRes.SetActive(false);
+    //}
 }
