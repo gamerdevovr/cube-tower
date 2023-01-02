@@ -10,7 +10,6 @@ public class CanvasButtons : MonoBehaviour
     public Sprite musicOn, musicOff;
     public GameObject fonMusic;
     public GameObject bestResult;
-    private string _message;
 
     public void Start()
     {
@@ -84,13 +83,11 @@ public class CanvasButtons : MonoBehaviour
 
     public void TapShare()
     {
-        _message = "I've had some success in Sky Cubes - " + PlayerPrefs.GetInt("score").ToString() + " cubes uphill!!! Who will beat my record?";
         bestResult.SetActive(true);
-        TakeScreenshotAndShare(_message);
-        //StartCoroutine(TakeScreenshotAndShare(_message));    
+        //StartCoroutine(TakeScreenshotAndShare());    
     }
 
-    private IEnumerator TakeScreenshotAndShare(string Message)
+    private IEnumerator TakeScreenshotAndShare()
     {
         yield return new WaitForEndOfFrame();
 
@@ -104,12 +101,13 @@ public class CanvasButtons : MonoBehaviour
         // To avoid memory leaks
         Destroy(ss);
 
+        bestResult.SetActive(false);
+        string Message = "I've had some success in Sky Cubes - " + PlayerPrefs.GetInt("score").ToString() + " cubes uphill!!! Who will beat my record?";
+
         new NativeShare().AddFile(filePath)
             .SetSubject("New result in Sky Cubes").SetText(Message).SetUrl("https://www.facebook.com/profile.php?id=100088822786759")
             .SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
             .Share();
-        
-        bestResult.SetActive(false);
 
     }
 
