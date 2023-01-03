@@ -234,7 +234,6 @@ RectTransform:
   - {fileID: 1927418831}
   - {fileID: 646204433}
   - {fileID: 1820647822}
-  - {fileID: 880684956}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -394,6 +393,7 @@ MonoBehaviour:
   musicOff: {fileID: 0}
   fonMusic: {fileID: 0}
   bestResult: {fileID: 0}
+  dRes: {fileID: 0}
 --- !u!82 &60114188
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1976,17 +1976,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880684955}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00022144611}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 55555338}
-  m_RootOrder: 14
+  m_Father: {fileID: 1820647822}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 37.5, y: -42.9}
+  m_AnchoredPosition: {x: 37.5, y: -401.89996}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &880684958
@@ -2019,22 +2019,22 @@ MonoBehaviour:
       m_Calls: []
   m_text: 999
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 818fc07fa0b6c104fbf4fecffbffa3f9, type: 2}
-  m_sharedMaterial: {fileID: 7161154841279015957, guid: 818fc07fa0b6c104fbf4fecffbffa3f9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c0ad4a0394c93914b9015acc7d11d6bd, type: 2}
+  m_sharedMaterial: {fileID: -4329067354698500378, guid: c0ad4a0394c93914b9015acc7d11d6bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 0
+    rgba: 4278241279
+  m_fontColor: {r: 1, g: 0.78039217, b: 0, a: 1}
+  m_enableVertexGradient: 1
+  m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 1, g: 0.9337593, b: 0.41176474, a: 1}
+    topRight: {r: 1, g: 0.9337593, b: 0.41176474, a: 1}
+    bottomLeft: {r: 1, g: 0.11022442, b: 0, a: 1}
+    bottomRight: {r: 0.9811321, g: 0.129755, b: 0.023139905, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -2073,7 +2073,7 @@ MonoBehaviour:
   m_isOrthographic: 0
   m_isCullingEnabled: 0
   m_horizontalMapping: 0
-  m_verticalMapping: 0
+  m_verticalMapping: 1
   m_uvLineOffset: 0
   m_geometrySortingOrder: 0
   m_IsTextObjectScaleStatic: 0
@@ -2109,7 +2109,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7161154841279015957, guid: 818fc07fa0b6c104fbf4fecffbffa3f9, type: 2}
+  - {fileID: -4329067354698500378, guid: c0ad4a0394c93914b9015acc7d11d6bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2294,6 +2294,7 @@ MonoBehaviour:
   musicOff: {fileID: 0}
   fonMusic: {fileID: 0}
   bestResult: {fileID: 0}
+  dRes: {fileID: 0}
 --- !u!114 &936216497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3016,6 +3017,7 @@ MonoBehaviour:
   musicOff: {fileID: 0}
   fonMusic: {fileID: 0}
   bestResult: {fileID: 0}
+  dRes: {fileID: 0}
 --- !u!1 &1144115237
 GameObject:
   m_ObjectHideFlags: 0
@@ -3649,7 +3651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1469183759
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4324,7 +4326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1820647822
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4336,7 +4338,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 880684956}
   m_Father: {fileID: 55555338}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4603,6 +4606,7 @@ MonoBehaviour:
   musicOff: {fileID: 0}
   fonMusic: {fileID: 0}
   bestResult: {fileID: 1820647821}
+  dRes: {fileID: 880684955}
 --- !u!82 &1927418836
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5336,6 +5340,7 @@ MonoBehaviour:
   musicOff: {fileID: 21300000, guid: 1a438f9ea21ca5c428b6a819f16e1739, type: 3}
   fonMusic: {fileID: 465080201}
   bestResult: {fileID: 0}
+  dRes: {fileID: 0}
 --- !u!1 &2063312458
 GameObject:
   m_ObjectHideFlags: 0
@@ -5486,6 +5491,7 @@ MonoBehaviour:
   musicOff: {fileID: 0}
   fonMusic: {fileID: 0}
   bestResult: {fileID: 0}
+  dRes: {fileID: 0}
 --- !u!1001 &6267270169683883107
 PrefabInstance:
   m_ObjectHideFlags: 0

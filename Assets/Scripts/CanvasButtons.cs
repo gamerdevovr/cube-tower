@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.IO;
+using TMPro;
 
 public class CanvasButtons : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CanvasButtons : MonoBehaviour
     public Sprite musicOn, musicOff;
     public GameObject fonMusic;
     public GameObject bestResult;
+    public GameObject dRes;
 
     public void Start()
     {
@@ -84,7 +86,8 @@ public class CanvasButtons : MonoBehaviour
     public void TapShare()
     {
         bestResult.SetActive(true);
-        //StartCoroutine(TakeScreenshotAndShare());    
+        dRes.GetComponent<TextMeshPro>().text = PlayerPrefs.GetInt("score").ToString();
+        StartCoroutine(TakeScreenshotAndShare());    
     }
 
     private IEnumerator TakeScreenshotAndShare()
