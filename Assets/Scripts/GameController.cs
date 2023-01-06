@@ -51,6 +51,8 @@ public class GameController : MonoBehaviour
 
     private List<int> AddedCubes = new List<int>();
 
+    public GameObject PausePlay;
+
     private void Start()
     {
 
@@ -120,7 +122,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetMouseButtonDown(0) || Input.touchCount > 0) && cubeToPlace != null && allCubes != null && !IsPointerOverUIObject())
+        if ((Input.GetMouseButtonDown(0) || Input.touchCount > 0) && cubeToPlace != null && allCubes != null && !IsPointerOverUIObject() && !PausePlay.GetComponent<Play_Pause>().GetStatusPause())
         {
 
 #if !UNITY_EDITOR
