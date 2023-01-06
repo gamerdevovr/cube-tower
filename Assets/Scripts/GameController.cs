@@ -148,7 +148,7 @@ public class GameController : MonoBehaviour
             nowCube.setVector(cubeToPlace.position);
             allCubesPosition.Add(nowCube.getVector());
 
-            if (PlayerPrefs.GetString("music") != "No")
+            if (PlayerPrefs.GetString("sound") != "No")
                 newCubeBell.GetComponent<AudioSource>().Play();
 
             GameObject newVfx = Instantiate(vfx, cubeToPlace.transform.position, Quaternion.identity);
@@ -295,7 +295,7 @@ public class GameController : MonoBehaviour
         if (position.Count > 1)
         {
             cubeToPlace.position = position[UnityEngine.Random.Range(0, position.Count)];
-            if (nowCountCubes >= 1 && PlayerPrefs.GetString("music") != "No")
+            if (nowCountCubes >= 1 && PlayerPrefs.GetString("sound") != "No")
                 GetComponent<AudioSource>().Play();
         }
         

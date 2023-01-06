@@ -8,20 +8,15 @@ using TMPro;
 public class CanvasButtons : MonoBehaviour
 {
 
-    public Sprite musicOn, musicOff;
-    public GameObject fonMusic;
+    public Sprite musicOn, musicOff, soundOn, soundOff, BtnMusicSoundOn, BtnMusicSoundOff;
+    public GameObject fonMusic, Music, Sound, BtnMusicOnOff, BtnSoundOnOff;
     public GameObject bestResult;
     public GameObject dRes;
 
     public void Start()
     {
-        if (gameObject.name.Equals("Music"))
-        {
-            if (!PlayerPrefs.GetString("music").Equals("Yes") && PlayerPrefs.GetString("music").Equals("No"))
-                GetComponent<Image>().sprite = musicOff;
-            else
-                GetComponent<Image>().sprite = musicOn;
-        }
+
+
     }
 
     IEnumerator StartScena(string nameScena)
@@ -36,7 +31,7 @@ public class CanvasButtons : MonoBehaviour
     public void RestartGame()
     {
         PlayerPrefs.SetFloat("nowCountCubes", 0);
-        if (PlayerPrefs.GetString("music") != "No")
+        if (PlayerPrefs.GetString("sound") != "No")
         {
             GetComponent<AudioSource>().Play();
             StartCoroutine(StartScena("Main"));
@@ -49,26 +44,9 @@ public class CanvasButtons : MonoBehaviour
 
     public void LoadFacebook()
     {
-        if (PlayerPrefs.GetString("music") != "No")
+        if (PlayerPrefs.GetString("sound") != "No")
             GetComponent<AudioSource>().Play();
         Application.OpenURL("https://facebook.com");
-    }
-
-    public void MusicWork()
-    {
-        if (PlayerPrefs.GetString("music") == "No")
-        {
-            GetComponent<AudioSource>().Play();
-            PlayerPrefs.SetString("music","Yes");
-            GetComponent<Image>().sprite = musicOn;
-            fonMusic.GetComponent<AudioSource>().Play();
-        }
-        else 
-        {
-            PlayerPrefs.SetString("music", "No");
-            GetComponent<Image>().sprite = musicOff;
-            fonMusic.GetComponent<AudioSource>().Stop();
-        }
     }
 
     public void ClearScore()
@@ -85,6 +63,9 @@ public class CanvasButtons : MonoBehaviour
 
     public void TapShare()
     {
+        if (PlayerPrefs.GetString("sound") != "No")
+            GetComponent<AudioSource>().Play();
+
         bestResult.SetActive(true);
         dRes.GetComponent<TextMeshPro>().text = PlayerPrefs.GetInt("score").ToString();
         StartCoroutine(TakeScreenshotAndShare());    
@@ -114,12 +95,5 @@ public class CanvasButtons : MonoBehaviour
 
     }
 
-    //private IEnumerable ShowBestResultforShare(GameObject bRes)
-    //{
-    //    Debug.Log(bRes.name);
-    //    //bRes.SetActive(true);
-    //    //yield return new WaitForSeconds(2);
-    //    //yield return StartCoroutine(TakeScreenshotAndShare(_message));
-    //    //bRes.SetActive(false);
-    //}
+    
 }
