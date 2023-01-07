@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
 
     public GameObject[] cubesToCreate;
 
-    public GameObject allCubes, vfx, newCubeBell, restartButton, gameOver;
+    public GameObject allCubes, vfx, newCubeBell, gameOver;
     public GameObject[] canvasStartPage;
     private Rigidbody allCubesRb;
 
@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour
             nowCube.setVector(cubeToPlace.position);
             allCubesPosition.Add(nowCube.getVector());
 
-            if (PlayerPrefs.GetString("sound") != "No")
+            if (PlayerPrefs.GetString("sound").Equals("Yes"))
                 newCubeBell.GetComponent<AudioSource>().Play();
 
             GameObject newVfx = Instantiate(vfx, cubeToPlace.transform.position, Quaternion.identity);
@@ -297,7 +297,7 @@ public class GameController : MonoBehaviour
         if (position.Count > 1)
         {
             cubeToPlace.position = position[UnityEngine.Random.Range(0, position.Count)];
-            if (nowCountCubes >= 1 && PlayerPrefs.GetString("sound") != "No")
+            if (nowCountCubes >= 1 && PlayerPrefs.GetString("sound").Equals("Yes"))
                 GetComponent<AudioSource>().Play();
         }
         
@@ -309,8 +309,8 @@ public class GameController : MonoBehaviour
             Destroy(cubeToPlace.gameObject);
             IsLose = true;
             StopCoroutine(showCubePlace);
-            restartButton.SetActive(true);
             gameOver.SetActive(true);
+            gameOver.GetComponent<AudioSource>().Play();
             //StartCoroutine(ScaleGround());
         }
 

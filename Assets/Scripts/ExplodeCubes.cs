@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ExplodeCubes : MonoBehaviour
 {
-    public GameObject restartButton,gameOver, explosion;
+    public GameObject gameOver, explosion;
     private bool _collisionSet;
     private float distanceMoveCamera;
     public GameObject ground;
@@ -19,8 +19,8 @@ public class ExplodeCubes : MonoBehaviour
                 child.gameObject.GetComponent<Rigidbody>().AddExplosionForce(70f, Vector3.up, 5f);
                 child.SetParent(null);
             }
-            restartButton.SetActive(true);
             gameOver.SetActive(true);
+            gameOver.GetComponent<AudioSource>().Play();
 
             if (PlayerPrefs.GetFloat("nowCountCubes") < 7f)
                 distanceMoveCamera = 7f;

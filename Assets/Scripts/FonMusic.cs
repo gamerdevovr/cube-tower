@@ -7,7 +7,7 @@ public class FonMusic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.GetString("music").Equals("No"))
+        if (PlayerPrefs.GetString("music").Equals("Yes"))
             GetComponent<AudioSource>().Play();
     }
 }

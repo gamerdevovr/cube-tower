@@ -7,7 +7,9 @@ public class Play_Pause : MonoBehaviour
 {
     public Sprite spritePlay, spritePause;
     private bool pause;
-    
+    public GameObject BtnSound;
+
+
     void Start()
     {
         pause = false;
@@ -16,6 +18,9 @@ public class Play_Pause : MonoBehaviour
 
     public void Click()
     {
+        if (PlayerPrefs.GetString("sound").Equals("Yes"))
+            BtnSound.GetComponent<AudioSource>().Play();
+
         if (!pause)
         {
             GetComponent<Image>().sprite = spritePlay;

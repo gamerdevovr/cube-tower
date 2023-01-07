@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class BtnSoundOnOff : MonoBehaviour
 {
     public Sprite soundOn, soundOff, BtnMusicSoundOn, BtnMusicSoundOff;
-    public GameObject Sound, _BtnSoundOnOff;
+    public GameObject Sound, _BtnSoundOnOff, BtnSound;
 
     public void Start()
     {
-        if (!PlayerPrefs.GetString("music").Equals("Yes"))
+        if (!PlayerPrefs.GetString("sound").Equals("Yes"))
         {
             Sound.GetComponent<Image>().sprite = soundOff;
             _BtnSoundOnOff.GetComponent<Image>().sprite = BtnMusicSoundOff;
@@ -25,15 +25,18 @@ public class BtnSoundOnOff : MonoBehaviour
 
     public void Click()
     {
-        if (PlayerPrefs.GetString("music").Equals("Yes"))
+        if (PlayerPrefs.GetString("sound").Equals("Yes"))
+            BtnSound.GetComponent<AudioSource>().Play();
+
+        if (PlayerPrefs.GetString("sound").Equals("Yes"))
         {
-            PlayerPrefs.SetString("music", "No");
+            PlayerPrefs.SetString("sound", "No");
             Sound.GetComponent<Image>().sprite = soundOff;
             _BtnSoundOnOff.GetComponent<Image>().sprite = BtnMusicSoundOff;
         }
         else
         {
-            PlayerPrefs.SetString("music", "Yes");
+            PlayerPrefs.SetString("sound", "Yes");
             Sound.GetComponent<Image>().sprite = soundOn;
             _BtnSoundOnOff.GetComponent<Image>().sprite = BtnMusicSoundOn;
         }

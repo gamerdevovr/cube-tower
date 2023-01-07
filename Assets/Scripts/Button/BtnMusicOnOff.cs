@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BtnMusicOnOff : MonoBehaviour
 {
     public Sprite musicOn, musicOff, BtnMusicSoundOn, BtnMusicSoundOff;
-    public GameObject Music, _BtnMusicOnOff, fonMusic;
+    public GameObject Music, _BtnMusicOnOff, fonMusic, BtnSound;
 
 
     public void Start()
@@ -26,6 +26,9 @@ public class BtnMusicOnOff : MonoBehaviour
 
     public void Click()
     {
+        if (PlayerPrefs.GetString("sound").Equals("Yes"))
+            BtnSound.GetComponent<AudioSource>().Play();
+
         if (PlayerPrefs.GetString("music").Equals("Yes"))
         {
             PlayerPrefs.SetString("music", "No");
