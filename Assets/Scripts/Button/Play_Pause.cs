@@ -7,7 +7,7 @@ public class Play_Pause : MonoBehaviour
 {
     public Sprite spritePlay, spritePause;
     private bool pause;
-    public GameObject BtnSound;
+    public GameObject BtnSound, FonMusic;
 
 
     void Start()
@@ -26,12 +26,15 @@ public class Play_Pause : MonoBehaviour
             GetComponent<Image>().sprite = spritePlay;
             Time.timeScale = 0;
             pause = true;
+            FonMusic.GetComponent<AudioSource>().Stop();
         }
         else
         {
             GetComponent<Image>().sprite = spritePause;
             Time.timeScale = 1;
             pause = false;
+            if (PlayerPrefs.GetString("music").Equals("Yes"))
+                FonMusic.GetComponent<AudioSource>().Play();
         }
     }
 

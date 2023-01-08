@@ -20,7 +20,8 @@ public class ExplodeCubes : MonoBehaviour
                 child.SetParent(null);
             }
             gameOver.SetActive(true);
-            gameOver.GetComponent<AudioSource>().Play();
+            if (PlayerPrefs.GetString("sound").Equals("Yes"))
+                gameOver.GetComponent<AudioSource>().Play();
 
             if (PlayerPrefs.GetFloat("nowCountCubes") < 7f)
                 distanceMoveCamera = 7f;
@@ -32,10 +33,6 @@ public class ExplodeCubes : MonoBehaviour
 
             GameObject newExplosion = Instantiate(explosion, new Vector3(collision.contacts[0].point.x, collision.contacts[0].point.y, collision.contacts[0].point.z), Quaternion.identity);
             Destroy(newExplosion, 2.5f);
-
-
-            if (PlayerPrefs.GetString("music") != "No")
-                GetComponent<AudioSource>().Play();
 
             Destroy(collision.gameObject);
             _collisionSet = true;

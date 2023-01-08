@@ -12,7 +12,7 @@ public class DestroyCube : MonoBehaviour
     IEnumerator CourDestroy(GameObject thisGameObject)
     {
         yield return new WaitForSeconds(2f);
-        //Debug.Log(thisGameObject.name + " - " + thisGameObject.transform.transform.position.y);
+
         if (thisGameObject.transform.transform.position.y < -50f)
             Destroy(thisGameObject);
     }

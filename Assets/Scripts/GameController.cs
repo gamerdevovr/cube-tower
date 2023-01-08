@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
 
     private bool IsLose, firstCube;
 
-    public GameObject ground;
+    public GameObject ground, fonMusic;
 
     public GameObject bestResult;
 
@@ -136,6 +136,8 @@ public class GameController : MonoBehaviour
                 firstCube = true;
                 foreach (GameObject obj in canvasStartPage)
                     Destroy(obj);
+                if (PlayerPrefs.GetString("music").Equals("Yes"))
+                    fonMusic.GetComponent<AudioSource>().Play();
             }
 
             GameObject createCube = null;
@@ -169,7 +171,6 @@ public class GameController : MonoBehaviour
             Destroy(cubeToPlace.gameObject);
             IsLose = true;
             StopCoroutine(showCubePlace);
-            //StartCoroutine(ScaleGround());
         }
 
         mainCam.localPosition = Vector3.MoveTowards(mainCam.localPosition, new Vector3(mainCam.localPosition.x, camMoveToYPosition, mainCam.localPosition.z), camMoveSpeed * Time.deltaTime);
@@ -251,15 +252,16 @@ public class GameController : MonoBehaviour
         while (true)
         {
             SpawnPosition();
-
+            if (nowCountCubes == 10)
+                cubeChangePlaceSpeed = 0.45f;
+            if (nowCountCubes == 20)
+                cubeChangePlaceSpeed = 0.4f;
+            if (nowCountCubes == 30)
+                cubeChangePlaceSpeed = 0.3f;
+            if (nowCountCubes == 40)
+                cubeChangePlaceSpeed = 0.25f;
             yield return new WaitForSeconds(cubeChangePlaceSpeed);
         }
-    }
-
-    IEnumerator ScaleGround()
-    {
-        yield return new WaitForSeconds(1.2f);
-        ground.transform.localScale = new Vector3(3f, 0.5f, 3f);
     }
 
     private bool IsPointerOverUIObject()
@@ -297,10 +299,10 @@ public class GameController : MonoBehaviour
         if (position.Count > 1)
         {
             cubeToPlace.position = position[UnityEngine.Random.Range(0, position.Count)];
-            if (nowCountCubes >= 1 && PlayerPrefs.GetString("sound").Equals("Yes"))
+            if (allCubes.transform.childCount > 1 && PlayerPrefs.GetString("sound").Equals("Yes"))
                 GetComponent<AudioSource>().Play();
         }
-        
+
         if (position.Count == 1)
             cubeToPlace.position = position[0];
         
@@ -310,8 +312,8 @@ public class GameController : MonoBehaviour
             IsLose = true;
             StopCoroutine(showCubePlace);
             gameOver.SetActive(true);
-            gameOver.GetComponent<AudioSource>().Play();
-            //StartCoroutine(ScaleGround());
+            if (PlayerPrefs.GetString("sound").Equals("Yes"))
+                gameOver.GetComponent<AudioSource>().Play();
         }
 
     }
