@@ -20,6 +20,7 @@ public class ExplodeCubes : MonoBehaviour
                 child.SetParent(null);
             }
             gameOver.SetActive(true);
+            gameOver.GetComponent<GameOver>().SetNewResult();
             if (PlayerPrefs.GetString("sound").Equals("Yes"))
                 gameOver.GetComponent<AudioSource>().Play();
 

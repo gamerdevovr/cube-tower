@@ -111,7 +111,7 @@ public class GameController : MonoBehaviour
 
         StartCoroutine(AddPosibleCubesToCreate());
 
-        PlayerPrefs.SetFloat("nowCountCubes", 0);
+        PlayerPrefs.SetInt("nowCountCubes", 0);
         mainCam = Camera.main.transform;
         camMoveToYPosition = 6f + nowCube.y - 1f;
 
@@ -313,6 +313,7 @@ public class GameController : MonoBehaviour
             IsLose = true;
             StopCoroutine(showCubePlace);
             gameOver.SetActive(true);
+            gameOver.GetComponent<GameOver>().SetNewResult();
             if (PlayerPrefs.GetString("sound").Equals("Yes"))
                 gameOver.GetComponent<AudioSource>().Play();
         }
