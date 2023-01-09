@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class GameController : MonoBehaviour
     private float camMoveToYPosition, camMoveSpeed = 2f;
 
 
-    public Text scoreTxt;
+    public GameObject scoreTxt;
 
     public GameObject[] cubesToCreate;
 
@@ -117,7 +118,7 @@ public class GameController : MonoBehaviour
         allCubesRb = allCubes.GetComponent<Rigidbody>();
         showCubePlace = StartCoroutine(ShowCubePlace());
 
-        scoreTxt.text = "<color='#E06055'>best result: " + PlayerPrefs.GetInt("score") + "</color>\npresent result: 0";
+        scoreTxt.GetComponent<TextMeshPro>().text = "best: " + PlayerPrefs.GetInt("score") + "\npresent: 0";
     }
 
     private void Update()
@@ -351,7 +352,7 @@ public class GameController : MonoBehaviour
         if (PlayerPrefs.GetInt("score") < maxY - 1)
             PlayerPrefs.SetInt("score", maxY - 1);
 
-        scoreTxt.text = "<color='#E06055'>best result: " + PlayerPrefs.GetInt("score") + "</color>\npresent result: " + (maxY - 1);
+        scoreTxt.GetComponent<TextMeshPro>().text = "best: " + PlayerPrefs.GetInt("score") + "\npresent: " + (maxY - 1);
         nowCountCubes = maxY - 1;
         PlayerPrefs.SetFloat("nowCountCubes", nowCountCubes);
 
