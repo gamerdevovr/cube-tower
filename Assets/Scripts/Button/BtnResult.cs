@@ -6,8 +6,7 @@ public class BtnResult : MonoBehaviour
 {
     public GameObject PodlozhkaResult;
     public GameObject BtnSound;
-    //public GameObject Logo;
-    //public GameObject TapToPlay;
+    public ClosedObjects closed;
 
     public void Click()
     {
@@ -17,8 +16,8 @@ public class BtnResult : MonoBehaviour
         PodlozhkaResult.GetComponent<ShowResult>().SetResultOnForm();
         PodlozhkaResult.SetActive(true);
 
-        //Logo.GetComponent<GameObject>().SetActive(false);
-        //TapToPlay.GetComponent<GameObject>().SetActive(false);
+        closed.SetClosing(true);
+        closed.SetVisibleObjects();
     }
 
 }

@@ -5,12 +5,14 @@ public class ShowResult : MonoBehaviour
 {
 
     public GameObject podlozhka, result1, result2, result3, close;
-    public GameObject Logo;
-    public GameObject TapToPlay;
+    public ClosedObjects closed;
 
     public void CloseForm()
     {
         podlozhka.SetActive(false);
+        
+        closed.SetClosing(false);
+        closed.SetVisibleObjects();
     }
 
     public void SetResultOnForm()
