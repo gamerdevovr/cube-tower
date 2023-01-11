@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 56
+  controlID: 18
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 57
+  controlID: 23
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 58
+  controlID: 24
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -363,7 +363,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 24250
+  m_LastSelectedObjectID: 48040
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -395,6 +395,7 @@ MonoBehaviour:
   m_ViewTransforms:
     m_KeySerializationHelper:
     - {fileID: 4504438326052933261, guid: 30f486387f338f643b0f7cc16c128244, type: 2}
+    - {fileID: -1859520303731631705, guid: 97c4f588fcf54354685a16eb9496b86b, type: 2}
     m_ValueSerializationHelper:
     - e00: 1
       e01: 0
@@ -412,10 +413,26 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
+    - e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 30f486387f338f643b0f7cc16c128244, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 97c4f588fcf54354685a16eb9496b86b, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 4504438326052933261, guid: 30f486387f338f643b0f7cc16c128244, type: 2}
+  - m_Target: {fileID: -1859520303731631705, guid: 97c4f588fcf54354685a16eb9496b86b, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -469,22 +486,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Button
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Button
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\develop\Unity\projects\cube-tower
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 117}
+    scrollPos: {x: 0, y: 101}
     m_SelectedIDs: c6620000
     m_LastClickedID: 25286
-    m_ExpandedIDs: 0000000070620000726200007462000076620000786200007a6200007c6200007e62000080620000826200008462000086620000
+    m_ExpandedIDs: 0000000070620000726200007462000076620000786200007a6200007c6200007e6200008062000082620000846200008662000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -537,9 +554,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f65e0000
-    m_LastClickedInstanceID: 24310
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 005f0000
+    m_LastClickedInstanceID: 24320
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000b0aa0000e0a5000006a60000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -640,9 +657,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ba5e0000
-      m_LastClickedID: 24250
-      m_ExpandedIDs: 06fbffff165d0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: ee65ffff4266ffff6c68ffff386cffff886cffffb26effff06fbffff165d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

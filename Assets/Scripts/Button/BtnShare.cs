@@ -6,11 +6,30 @@ using System.IO;
 public class BtnShare : MonoBehaviour
 {
     public GameObject bestResult, dRes, BtnSound;
+    public GameObject logo, tapToPlay;
+    public GameObject SettingOpenForm, PodlozhkaResult;
+
 
     public void Click()
     {
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
             BtnSound.GetComponent<AudioSource>().Play();
+
+        SettingOpenForm.GetComponent<BtnSettingOpenClose>().ClickClose();
+        PodlozhkaResult.GetComponent<ShowResult>().CloseForm();
+
+        if (logo.activeSelf)
+        {
+            logo.GetComponent<ClosedObjects>().SetShareClosing(true);
+            logo.SetActive(false);
+        }
+
+        if (tapToPlay.activeSelf)
+        {
+            tapToPlay.GetComponent<ClosedObjects>().SetShareClosing(true);
+            logo.SetActive(false);
+        }
+
 
         bestResult.SetActive(true);
         dRes.GetComponent<TextMeshPro>().text = PlayerPrefs.GetInt("score").ToString();
@@ -39,5 +58,17 @@ public class BtnShare : MonoBehaviour
             .SetSubject("New result in Sky Cubes").SetText(Message).SetUrl("https://www.facebook.com/profile.php?id=100088822786759")
             .SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
             .Share();
+
+        if (logo.activeSelf)
+        {
+            logo.GetComponent<ClosedObjects>().SetShareClosing(false);
+            logo.SetActive(true);
+        }
+
+        if (tapToPlay.activeSelf)
+        {
+            tapToPlay.GetComponent<ClosedObjects>().SetShareClosing(false);
+            logo.SetActive(true);
+        }
     }
 }

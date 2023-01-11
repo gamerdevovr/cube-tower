@@ -5,14 +5,25 @@ public class ShowResult : MonoBehaviour
 {
 
     public GameObject podlozhka, result1, result2, result3, close;
-    public ClosedObjects closed;
+
+    public GameObject logo, tapToPlay;
 
     public void CloseForm()
     {
         podlozhka.SetActive(false);
-        
-        closed.SetClosing(false);
-        closed.SetVisibleObjects();
+
+        if (logo.GetComponent<ClosedObjects>().GetResultClosing())
+        {
+            logo.GetComponent<ClosedObjects>().SetResultClosing(false);
+            logo.SetActive(true);
+        }
+
+        if (tapToPlay.GetComponent<ClosedObjects>().GetResultClosing())
+        {
+            tapToPlay.GetComponent<ClosedObjects>().SetResultClosing(false);
+            tapToPlay.SetActive(true);
+        }
+
     }
 
     public void SetResultOnForm()

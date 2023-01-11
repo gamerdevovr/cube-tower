@@ -2,33 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ClosedObjects : MonoBehaviour
 {
-    public bool closing = false;
+    [SerializeField] private bool closingResult = false;
+    [SerializeField] private bool closingShare = false;
+    [SerializeField] private bool closingSetting = false;
 
-    public GameObject logo, tapToPlay;
-
-    public void SetClosing(bool cl)
+    public void SetResultClosing(bool cl)
     {
-        closing = cl;   
+        closingResult = cl;   
     }
 
-    public bool GetClosing()
+    public bool GetResultClosing()
     {
-        return closing;
+        return closingResult;
     }
 
-    public void SetVisibleObjects()
+    public void SetShareClosing(bool cl)
     {
-        if (closing)
-        {
-            logo.SetActive(false);
-            tapToPlay.SetActive(false);
-        }
-        else
-        {
-            logo.SetActive(true);
-            tapToPlay.SetActive(true);
-        }
+        closingShare = cl;
+    }
+
+    public bool GetShareClosing()
+    {
+        return closingShare;
+    }
+
+    public void SetSettingClosing(bool cl)
+    {
+        closingShare = cl;
+    }
+
+    public bool GetSettingClosing()
+    {
+        return closingShare;
     }
 }

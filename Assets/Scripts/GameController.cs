@@ -136,7 +136,7 @@ public class GameController : MonoBehaviour
             {
                 firstCube = true;
                 foreach (GameObject obj in canvasStartPage)
-                    Destroy(obj);
+                    obj.SetActive(false);
                 if (PlayerPrefs.GetString("music").Equals("Yes"))
                     fonMusic.GetComponent<AudioSource>().Play();
             }
@@ -253,13 +253,13 @@ public class GameController : MonoBehaviour
         while (true)
         {
             SpawnPosition();
-            if (nowCountCubes == 10)
+            if (nowCountCubes == 50)
                 cubeChangePlaceSpeed = 0.45f;
-            if (nowCountCubes == 20)
+            if (nowCountCubes == 100)
                 cubeChangePlaceSpeed = 0.4f;
-            if (nowCountCubes == 30)
+            if (nowCountCubes == 150)
                 cubeChangePlaceSpeed = 0.3f;
-            if (nowCountCubes == 40)
+            if (nowCountCubes == 190)
                 cubeChangePlaceSpeed = 0.25f;
             yield return new WaitForSeconds(cubeChangePlaceSpeed);
         }
