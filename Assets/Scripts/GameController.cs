@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     public Transform cubeToPlace;
     private float camMoveToYPosition, camMoveSpeed = 2f;
 
+    public float ChytluvistKrena = 0.01f;
+
 
     public GameObject scoreTxt;
 
@@ -21,8 +23,6 @@ public class GameController : MonoBehaviour
     public GameObject allCubes, vfx, newCubeBell, gameOver;
     public GameObject[] canvasStartPage;
     private Rigidbody allCubesRb;
-
-    public Color[] bgColors;
 
     private bool IsLose, firstCube;
 
@@ -167,7 +167,7 @@ public class GameController : MonoBehaviour
             MoveCameraChangeBg();
         }
 
-        if (!IsLose &&  allCubesRb.velocity.magnitude > 0.1f)
+        if (!IsLose &&  allCubesRb.velocity.magnitude > ChytluvistKrena)
         {           
             Destroy(cubeToPlace.gameObject);
             IsLose = true;
