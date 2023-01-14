@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     public Transform cubeToPlace;
     private float camMoveToYPosition, camMoveSpeed = 2f;
 
-    public float ChytluvistKrena = 0.01f;
+    public float ChytluvistKrena;
 
 
     public GameObject scoreTxt;
@@ -123,7 +123,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetMouseButtonDown(0) || Input.touchCount > 0) && cubeToPlace != null && allCubes != null && !IsPointerOverUIObject() && !PausePlay.GetComponent<Play_Pause>().GetStatusPause())
+        if ((( Input.GetMouseButtonDown(0) || Input.touchCount > 0 ) && cubeToPlace != null && allCubes != null && !IsPointerOverUIObject() && !PausePlay.GetComponent<Play_Pause>().GetStatusPause()) || canvasStartPage[1].GetComponent<ClosedObjects>().GetClicked())
         {
 
 #if !UNITY_EDITOR
@@ -165,6 +165,9 @@ public class GameController : MonoBehaviour
 
             SpawnPosition();
             MoveCameraChangeBg();
+
+            if (canvasStartPage[1].GetComponent<ClosedObjects>().GetClicked())
+                canvasStartPage[1].GetComponent<ClosedObjects>().SetClicked(false);
         }
 
         if (!IsLose &&  allCubesRb.velocity.magnitude > ChytluvistKrena)
@@ -266,7 +269,7 @@ public class GameController : MonoBehaviour
     }
 
     private bool IsPointerOverUIObject()
-    {
+    {        
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         List<RaycastResult> results = new List<RaycastResult>();
