@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -175,6 +174,10 @@ public class GameController : MonoBehaviour
             Destroy(cubeToPlace.gameObject);
             IsLose = true;
             StopCoroutine(showCubePlace);
+            gameOver.SetActive(true);
+            gameOver.GetComponent<GameOver>().SetNewResult();
+            if (PlayerPrefs.GetString("sound").Equals("Yes"))
+                gameOver.GetComponent<AudioSource>().Play();
         }
 
         mainCam.localPosition = Vector3.MoveTowards(mainCam.localPosition, new Vector3(mainCam.localPosition.x, camMoveToYPosition, mainCam.localPosition.z), camMoveSpeed * Time.deltaTime);
@@ -303,8 +306,6 @@ public class GameController : MonoBehaviour
         if (position.Count > 1)
         {
             cubeToPlace.position = position[UnityEngine.Random.Range(0, position.Count)];
-            if (allCubes.transform.childCount > 1 && PlayerPrefs.GetString("sound").Equals("Yes"))
-                GetComponent<AudioSource>().Play();
         }
 
         if (position.Count == 1)
