@@ -5,33 +5,35 @@ using UnityEngine;
 
 public class BtnResult : MonoBehaviour
 {
-    public GameObject PodlozhkaResult;
-    public GameObject BtnSound;
-    public GameObject logo, tapToPlay;
-    public GameObject BestResultForShare, settingOpenForm;
+    [SerializeField] private GameObject     _podlozhkaResult,
+                                            _btnSound,
+                                            _logo,
+                                            _tapToPlay,
+                                            _bestResultForShare,
+                                            _settingOpenForm;
 
     public void Click()
     {
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
-            BtnSound.GetComponent<AudioSource>().Play();
+            _btnSound.GetComponent<AudioSource>().Play();
 
-        BestResultForShare.SetActive(false);
-        settingOpenForm.GetComponent<BtnSettingOpenClose>().ClickClose();
+        _bestResultForShare.SetActive(false);
+        _settingOpenForm.GetComponent<BtnSettingOpenClose>().ClickClose();
 
-        if (logo.activeSelf)
+        if (_logo.activeSelf)
         {
-            logo.GetComponent<ClosedObjects>().SetResultClosing(true);
-            logo.SetActive(false);
+            _logo.GetComponent<ClosedObjects>().SetResultClosing(true);
+            _logo.SetActive(false);
         }
 
-        if (tapToPlay.activeSelf)
+        if (_tapToPlay.activeSelf)
         {
-            tapToPlay.GetComponent<ClosedObjects>().SetResultClosing(true);
-            logo.SetActive(false);
+            _tapToPlay.GetComponent<ClosedObjects>().SetResultClosing(true);
+            _logo.SetActive(false);
         }
 
-        PodlozhkaResult.GetComponent<ShowResult>().SetResultOnForm();
-        PodlozhkaResult.SetActive(true);
+        _podlozhkaResult.GetComponent<ShowResult>().SetResultOnForm();
+        _podlozhkaResult.SetActive(true);
     }
 
 }

@@ -4,24 +4,33 @@ using TMPro;
 public class ShowResult : MonoBehaviour
 {
 
-    public GameObject podlozhka, result1, result2, result3, close;
-
-    public GameObject logo, tapToPlay;
+    [SerializeField] private GameObject                 _podlozhka,
+                                                        _result1,
+                                                        _result2,
+                                                        _result3,
+                                                        _close,
+                                                        _logo, 
+                                                        _tapToPlay, 
+                                                        _btnSound;
 
     public void CloseForm()
     {
-        podlozhka.SetActive(false);
 
-        if (logo.GetComponent<ClosedObjects>().GetResultClosing())
+        if (PlayerPrefs.GetString("sound").Equals("Yes"))
+            _btnSound.GetComponent<AudioSource>().Play();
+
+        _podlozhka.SetActive(false);
+
+        if (_logo.GetComponent<ClosedObjects>().GetResultClosing())
         {
-            logo.GetComponent<ClosedObjects>().SetResultClosing(false);
-            logo.SetActive(true);
+            _logo.GetComponent<ClosedObjects>().SetResultClosing(false);
+            _logo.SetActive(true);
         }
 
-        if (tapToPlay.GetComponent<ClosedObjects>().GetResultClosing())
+        if (_tapToPlay.GetComponent<ClosedObjects>().GetResultClosing())
         {
-            tapToPlay.GetComponent<ClosedObjects>().SetResultClosing(false);
-            tapToPlay.SetActive(true);
+            _tapToPlay.GetComponent<ClosedObjects>().SetResultClosing(false);
+            _tapToPlay.SetActive(true);
         }
 
     }
@@ -29,9 +38,9 @@ public class ShowResult : MonoBehaviour
     public void SetResultOnForm()
     {
        
-        result1.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("result1").ToString();
-        result2.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("result2").ToString();
-        result3.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("result3").ToString();
+        _result1.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("result1").ToString();
+        _result2.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("result2").ToString();
+        _result3.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("result3").ToString();
 
     }
 

@@ -5,41 +5,45 @@ using UnityEngine.UI;
 
 public class Play_Pause : MonoBehaviour
 {
-    public Sprite spritePlay, spritePause;
-    private bool pause;
-    public GameObject BtnSound, FonMusic;
+    [SerializeField] private Sprite                 _spritePlay, 
+                                                    _spritePause;
+    
+    [SerializeField] private GameObject             _btnSound, 
+                                                    _fonMusic;
+    
+    private bool                                    _pause;
 
 
     void Start()
     {
-        pause = false;
-        GetComponent<Image>().sprite = spritePause;
+        _pause = false;
+        GetComponent<Image>().sprite = _spritePause;
     }
 
     public void Click()
     {
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
-            BtnSound.GetComponent<AudioSource>().Play();
+            _btnSound.GetComponent<AudioSource>().Play();
 
-        if (!pause)
+        if (!_pause)
         {
-            GetComponent<Image>().sprite = spritePlay;
+            GetComponent<Image>().sprite = _spritePlay;
             Time.timeScale = 0;
-            pause = true;
-            FonMusic.GetComponent<AudioSource>().Stop();
+            _pause = true;
+            _fonMusic.GetComponent<AudioSource>().Stop();
         }
         else
         {
-            GetComponent<Image>().sprite = spritePause;
+            GetComponent<Image>().sprite = _spritePause;
             Time.timeScale = 1;
-            pause = false;
+            _pause = false;
             if (PlayerPrefs.GetString("music").Equals("Yes"))
-                FonMusic.GetComponent<AudioSource>().Play();
+                _fonMusic.GetComponent<AudioSource>().Play();
         }
     }
 
     public bool GetStatusPause()
     {
-        return pause;
+        return _pause;
     }
 }

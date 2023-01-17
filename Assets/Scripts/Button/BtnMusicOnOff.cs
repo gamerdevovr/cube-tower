@@ -5,21 +5,28 @@ using UnityEngine.UI;
 
 public class BtnMusicOnOff : MonoBehaviour
 {
-    public Sprite musicOn, musicOff, BtnMusicSoundOn, BtnMusicSoundOff;
-    public GameObject Music, _BtnMusicOnOff, fonMusic, BtnSound;
+    [SerializeField] private Sprite         _musicOn,
+                                            _musicOff, 
+                                            _btnMusicSoundOn, 
+                                            _btnMusicSoundOff;
+
+    [SerializeField] private GameObject     _music, 
+                                            _btnMusicOnOff,
+                                            _fonMusic, 
+                                            _btnSound;
 
 
     public void Start()
     {
         if (!PlayerPrefs.GetString("music").Equals("Yes"))
         {
-            Music.GetComponent<Image>().sprite = musicOff;
-            _BtnMusicOnOff.GetComponent<Image>().sprite = BtnMusicSoundOff;
+            _music.GetComponent<Image>().sprite = _musicOff;
+            _btnMusicOnOff.GetComponent<Image>().sprite = _btnMusicSoundOff;
         }
         else
         {
-            Music.GetComponent<Image>().sprite = musicOn;
-            _BtnMusicOnOff.GetComponent<Image>().sprite = BtnMusicSoundOn;
+            _music.GetComponent<Image>().sprite = _musicOn;
+            _btnMusicOnOff.GetComponent<Image>().sprite = _btnMusicSoundOn;
         }
     }
 
@@ -27,21 +34,21 @@ public class BtnMusicOnOff : MonoBehaviour
     public void Click()
     {
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
-            BtnSound.GetComponent<AudioSource>().Play();
+            _btnSound.GetComponent<AudioSource>().Play();
 
         if (PlayerPrefs.GetString("music").Equals("Yes"))
         {
             PlayerPrefs.SetString("music", "No");
-            Music.GetComponent<Image>().sprite = musicOff;
-            _BtnMusicOnOff.GetComponent<Image>().sprite = BtnMusicSoundOff;
-            fonMusic.GetComponent<AudioSource>().Stop();
+            _music.GetComponent<Image>().sprite = _musicOff;
+            _btnMusicOnOff.GetComponent<Image>().sprite = _btnMusicSoundOff;
+            _fonMusic.GetComponent<AudioSource>().Stop();
         }
         else
         {
             PlayerPrefs.SetString("music", "Yes");
-            Music.GetComponent<Image>().sprite = musicOn;
-            _BtnMusicOnOff.GetComponent<Image>().sprite = BtnMusicSoundOn;
-            fonMusic.GetComponent<AudioSource>().Play();
+            _music.GetComponent<Image>().sprite = _musicOn;
+            _btnMusicOnOff.GetComponent<Image>().sprite = _btnMusicSoundOn;
+            _fonMusic.GetComponent<AudioSource>().Play();
         }
     }
 }

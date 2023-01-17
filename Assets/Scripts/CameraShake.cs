@@ -2,28 +2,30 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    private Transform camTransform;
-    private float shakeDur = 1f, shakeAmount = 0.08f, decreaseFactor = 2f;
+    private Transform           _camTransform;
+    private float               _shakeDur = 1f,
+                                _shakeAmount = 0.08f, 
+                                _decreaseFactor = 2f;
 
-    private Vector3 originPos;
+    private Vector3             _originPos;
 
     private void Start()
     {
-        camTransform = GetComponent<Transform>();
-        originPos = camTransform.localPosition;
+        _camTransform = GetComponent<Transform>();
+        _originPos = _camTransform.localPosition;
     }
 
     private void Update()
     {
-        if (shakeDur > 0)
+        if (_shakeDur > 0)
         {
-            camTransform.localPosition = originPos + Random.insideUnitSphere * shakeAmount;
-            shakeDur -= Time.deltaTime * decreaseFactor;
+            _camTransform.localPosition = _originPos + Random.insideUnitSphere * _shakeAmount;
+            _shakeDur -= Time.deltaTime * _decreaseFactor;
         }
         else 
         {
-            shakeDur = 0;
-            camTransform.localPosition = originPos;
+            _shakeDur = 0;
+            _camTransform.localPosition = _originPos;
         }
     }
 }

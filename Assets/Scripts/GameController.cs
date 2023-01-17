@@ -7,122 +7,100 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    private CubePos nowCube = new CubePos(0, 1, 0);
-    public float cubeChangePlaceSpeed = 0.5f;
-    public Transform cubeToPlace;
-    private float camMoveToYPosition, camMoveSpeed = 2f;
 
-    public float ChytluvistKrena;
+    public GameObject               _scoreTxt,
+                                    _allCubes,
+                                    _vfx,
+                                    _newCubeBell,
+                                    _gameOver,
+                                    _ground,
+                                    _fonMusic,
+                                    _bestResult,
+                                    _pausePlay;
+    
+    public Transform                _cubeToPlace;
+    
+    public float                    _cubeChangePlaceSpeed = 0.5f,
+                                    _chytluvistKrena;
 
+    public GameObject[]             _cubesToCreate,
+                                    _canvasStartPage;
 
-    public GameObject scoreTxt;
+    private int                     _prevCountMaxHorizontal,
+                                    _nowCountCubes = 0;
 
-    public GameObject[] cubesToCreate;
+    private int[]                   _eventsGame = { 5, 10, 20, 30, 50, 70, 100, 130, 200};
 
-    public GameObject allCubes, vfx, newCubeBell, gameOver;
-    public GameObject[] canvasStartPage;
-    private Rigidbody allCubesRb;
+    private float                   _camMoveToYPosition,
+                                    _camMoveSpeed = 2f;
 
-    private bool IsLose, firstCube;
+    private bool                    _isLose,
+                                    _firstCube;
 
-    public GameObject ground, fonMusic;
+    private CubePos                 _nowCube = new CubePos(0, 1, 0);
+    private Rigidbody               _allCubesRb;
+    private Coroutine               _showCubePlace;
+    private Transform               _mainCam;
+    private List<GameObject>        _posibleCubesToCreate = new List<GameObject>();
+    private List<int>               _addedCubes = new List<int>();
 
-    public GameObject bestResult;
-
-    private List<Vector3> allCubesPosition = new List<Vector3>
-    {
-        new Vector3(0, 0, 0),
-        new Vector3(1, 0, 0),
-        new Vector3(-1, 0, 0),
-        new Vector3(0, 1, 0),
-        new Vector3(0, 0, 1),
-        new Vector3(0, 0, -1),
-        new Vector3(1, 0, 1),
-        new Vector3(-1, 0, -1),
-        new Vector3(-1, 0, 1),
-        new Vector3(1, 0, -1),
-    };
-
-    private int prevCountMaxHorizontal, nowCountCubes = 0;
-    private Coroutine showCubePlace;
-    private Transform mainCam;
-
-    private List<GameObject> posibleCubesToCreate = new List<GameObject>();
-
-    private List<int> AddedCubes = new List<int>();
-
-    public GameObject PausePlay;
+    private List<Vector3>           _allCubesPosition = new List<Vector3>
+                                    {
+                                        new Vector3(0, 0, 0),
+                                        new Vector3(1, 0, 0),
+                                        new Vector3(-1, 0, 0),
+                                        new Vector3(0, 1, 0),
+                                        new Vector3(0, 0, 1),
+                                        new Vector3(0, 0, -1),
+                                        new Vector3(1, 0, 1),
+                                        new Vector3(-1, 0, -1),
+                                        new Vector3(-1, 0, 1),
+                                        new Vector3(1, 0, -1),
+                                    };
 
     private void Start()
     {
+        int startResult = PlayerPrefs.GetInt("score");
 
-        if (PlayerPrefs.GetInt("score") < 5)
+        if (startResult < 5)
         {
-            posibleCubesToCreate.Add(cubesToCreate[0]);
-            AddedCubes.Add(0);
+            _posibleCubesToCreate.Add(_cubesToCreate[0]);
+            _addedCubes.Add(0);
         }
-        if (PlayerPrefs.GetInt("score") >= 5)
+        else
         {
-            posibleCubesToCreate.Add(cubesToCreate[1]);
-            AddedCubes.Add(5);
-        }
-        if (PlayerPrefs.GetInt("score") >= 10)
-        {
-            posibleCubesToCreate.Add(cubesToCreate[2]);
-            AddedCubes.Add(10);
-        }
-        if (PlayerPrefs.GetInt("score") >= 20)
-        {
-            posibleCubesToCreate.Add(cubesToCreate[3]);
-            AddedCubes.Add(20);
-        }
-        if (PlayerPrefs.GetInt("score") >= 30)
-        {
-            posibleCubesToCreate.Add(cubesToCreate[4]);
-            AddedCubes.Add(30);
-        }
-        if (PlayerPrefs.GetInt("score") >= 50)
-        {
-            posibleCubesToCreate.Add(cubesToCreate[5]);
-            AddedCubes.Add(50);
-        }
-        if (PlayerPrefs.GetInt("score") >= 70)
-        {
-            posibleCubesToCreate.Add(cubesToCreate[6]);
-            AddedCubes.Add(70);
-        }
-        if (PlayerPrefs.GetInt("score") >= 100)
-        {
-            posibleCubesToCreate.Add(cubesToCreate[7]);
-            AddedCubes.Add(100);
-        }
-        if (PlayerPrefs.GetInt("score") >= 130)
-        {
-            posibleCubesToCreate.Add(cubesToCreate[8]);
-            AddedCubes.Add(130);
-        }
-        if (PlayerPrefs.GetInt("score") >= 200)
-        {
-            posibleCubesToCreate.Add(cubesToCreate[9]);
-            AddedCubes.Add(200);
+            int i = 0;
+
+            foreach (int res in _eventsGame)
+            {
+                if (startResult >= res)
+                {
+                    i++;
+                    _posibleCubesToCreate.Add(_cubesToCreate[i]);
+                    _addedCubes.Add(res);
+                }
+                else
+                    break;
+            }
         }
 
-
+        //Debug.Log(_posibleCubesToCreate.Count);
+        
         StartCoroutine(AddPosibleCubesToCreate());
 
         PlayerPrefs.SetInt("nowCountCubes", 0);
-        mainCam = Camera.main.transform;
-        camMoveToYPosition = 6f + nowCube.y - 1f;
+        _mainCam = Camera.main.transform;
+        _camMoveToYPosition = 6f + _nowCube.y - 1f;
 
-        allCubesRb = allCubes.GetComponent<Rigidbody>();
-        showCubePlace = StartCoroutine(ShowCubePlace());
+        _allCubesRb = _allCubes.GetComponent<Rigidbody>();
+        _showCubePlace = StartCoroutine(ShowCubePlace());
 
-        scoreTxt.GetComponent<TextMeshPro>().text = "best: " + PlayerPrefs.GetInt("score") + "\npresent: 0";
+        _scoreTxt.GetComponent<TextMeshPro>().text = "best: " + PlayerPrefs.GetInt("score") + "\npresent: 0";
     }
 
     private void Update()
     {
-        if ((( Input.GetMouseButtonDown(0) || Input.touchCount > 0 ) && cubeToPlace != null && allCubes != null && !IsPointerOverUIObject() && !PausePlay.GetComponent<Play_Pause>().GetStatusPause()) || canvasStartPage[1].GetComponent<ClosedObjects>().GetClicked())
+        if ((( Input.GetMouseButtonDown(0) || Input.touchCount > 0 ) && _cubeToPlace != null && _allCubes != null && !IsPointerOverUIObject() && !_pausePlay.GetComponent<Play_Pause>().GetStatusPause()) || _canvasStartPage[1].GetComponent<ClosedObjects>().GetClicked())
         {
 
 #if !UNITY_EDITOR
@@ -131,125 +109,76 @@ public class GameController : MonoBehaviour
 #endif
 
 
-            if (!firstCube)
+            if (!_firstCube)
             {
-                firstCube = true;
-                foreach (GameObject obj in canvasStartPage)
+                _firstCube = true;
+                foreach (GameObject obj in _canvasStartPage)
                     obj.SetActive(false);
                 if (PlayerPrefs.GetString("music").Equals("Yes"))
-                    fonMusic.GetComponent<AudioSource>().Play();
+                    _fonMusic.GetComponent<AudioSource>().Play();
             }
 
             GameObject createCube = null;
-            if (posibleCubesToCreate.Count == 1)
-                createCube = posibleCubesToCreate[0];
+            if (_posibleCubesToCreate.Count == 1)
+                createCube = _posibleCubesToCreate[0];
             else
-                createCube = posibleCubesToCreate[UnityEngine.Random.Range(0, posibleCubesToCreate.Count)];
+                createCube = _posibleCubesToCreate[UnityEngine.Random.Range(0, _posibleCubesToCreate.Count)];
             
-            GameObject newCube = Instantiate(createCube, cubeToPlace.position, Quaternion.identity) as GameObject;
+            GameObject newCube = Instantiate(createCube, _cubeToPlace.position, Quaternion.identity) as GameObject;
 
-            newCube.transform.SetParent(allCubes.transform);
-            nowCube.setVector(cubeToPlace.position);
-            allCubesPosition.Add(nowCube.getVector());
+            newCube.transform.SetParent(_allCubes.transform);
+            _nowCube.setVector(_cubeToPlace.position);
+            _allCubesPosition.Add(_nowCube.getVector());
 
             if (PlayerPrefs.GetString("sound").Equals("Yes"))
-                newCubeBell.GetComponent<AudioSource>().Play();
+                _newCubeBell.GetComponent<AudioSource>().Play();
 
-            GameObject newVfx = Instantiate(vfx, cubeToPlace.transform.position, Quaternion.identity);
+            GameObject newVfx = Instantiate(_vfx, _cubeToPlace.transform.position, Quaternion.identity);
             Destroy(newVfx, 1.5f);
 
 
-            allCubesRb.isKinematic = true;
-            allCubesRb.isKinematic = false;
+            _allCubesRb.isKinematic = true;
+            _allCubesRb.isKinematic = false;
 
             SpawnPosition();
             MoveCameraChangeBg();
 
-            if (canvasStartPage[1].GetComponent<ClosedObjects>().GetClicked())
-                canvasStartPage[1].GetComponent<ClosedObjects>().SetClicked(false);
+            if (_canvasStartPage[1].GetComponent<ClosedObjects>().GetClicked())
+                _canvasStartPage[1].GetComponent<ClosedObjects>().SetClicked(false);
         }
 
-        if (!IsLose &&  allCubesRb.velocity.magnitude > ChytluvistKrena)
+        if (!_isLose &&  _allCubesRb.velocity.magnitude > _chytluvistKrena)
         {           
-            Destroy(cubeToPlace.gameObject);
-            IsLose = true;
-            StopCoroutine(showCubePlace);
-            gameOver.SetActive(true);
-            gameOver.GetComponent<GameOver>().SetNewResult();
+            Destroy(_cubeToPlace.gameObject);
+            _isLose = true;
+            StopCoroutine(_showCubePlace);
+            _gameOver.SetActive(true);
+            _gameOver.GetComponent<GameOver>().SetNewResult();
             if (PlayerPrefs.GetString("sound").Equals("Yes"))
-                gameOver.GetComponent<AudioSource>().Play();
+                _gameOver.GetComponent<AudioSource>().Play();
         }
 
-        mainCam.localPosition = Vector3.MoveTowards(mainCam.localPosition, new Vector3(mainCam.localPosition.x, camMoveToYPosition, mainCam.localPosition.z), camMoveSpeed * Time.deltaTime);
+        _mainCam.localPosition = Vector3.MoveTowards(_mainCam.localPosition, new Vector3(_mainCam.localPosition.x, _camMoveToYPosition, _mainCam.localPosition.z), _camMoveSpeed * Time.deltaTime);
     }
 
     IEnumerator AddPosibleCubesToCreate()
     {
         while (true)
         {
+            int nowResult = _nowCountCubes;
             yield return new WaitForSeconds(2);
-            if (PlayerPrefs.GetInt("score") >= 5 && !AddedCubes.Contains(5))
-            {
-                posibleCubesToCreate.Add(cubesToCreate[1]);
-                AddedCubes.Add(5);
-                if (PlayerPrefs.GetInt("score") == 5)
-                    bestResult.GetComponent<Animation>().Play("BestResult");
-            }
-            if (PlayerPrefs.GetInt("score") >= 10 && !AddedCubes.Contains(10))
-            {
-                posibleCubesToCreate.Add(cubesToCreate[2]);
-                AddedCubes.Add(10);
-                if (PlayerPrefs.GetInt("score") == 10)
-                    bestResult.GetComponent<Animation>().Play("BestResult");
-            }
-            if (PlayerPrefs.GetInt("score") >= 20 && !AddedCubes.Contains(20))
-            {
-                posibleCubesToCreate.Add(cubesToCreate[3]);
-                AddedCubes.Add(20);
-                if (PlayerPrefs.GetInt("score") == 20)
-                    bestResult.GetComponent<Animation>().Play("BestResult");
-            }
-            if (PlayerPrefs.GetInt("score") >= 30 && !AddedCubes.Contains(30))
-            {
-                posibleCubesToCreate.Add(cubesToCreate[4]);
-                AddedCubes.Add(30);
-                if (PlayerPrefs.GetInt("score") == 30)
-                    bestResult.GetComponent<Animation>().Play("BestResult");
-            }
-            if (PlayerPrefs.GetInt("score") >= 50 && !AddedCubes.Contains(50))
-            {
-                posibleCubesToCreate.Add(cubesToCreate[5]);
-                AddedCubes.Add(50);
-                if (PlayerPrefs.GetInt("score") == 50)
-                    bestResult.GetComponent<Animation>().Play("BestResult");
-            }
-            if (PlayerPrefs.GetInt("score") >= 70 && !AddedCubes.Contains(70))
-            {
-                posibleCubesToCreate.Add(cubesToCreate[6]);
-                AddedCubes.Add(70);
-                if (PlayerPrefs.GetInt("score") == 70)
-                    bestResult.GetComponent<Animation>().Play("BestResult");
-            }
-            if (PlayerPrefs.GetInt("score") >= 100 && !AddedCubes.Contains(100))
-            {
-                posibleCubesToCreate.Add(cubesToCreate[7]);
-                AddedCubes.Add(100);
-                if (PlayerPrefs.GetInt("score") == 100)
-                    bestResult.GetComponent<Animation>().Play("BestResult");
-            }
-            if (PlayerPrefs.GetInt("score") >= 130 && !AddedCubes.Contains(130))
-            {
-                posibleCubesToCreate.Add(cubesToCreate[8]);
-                AddedCubes.Add(130);
-                if (PlayerPrefs.GetInt("score") == 130)
-                    bestResult.GetComponent<Animation>().Play("BestResult");
-            }
-            if (PlayerPrefs.GetInt("score") >= 200 && !AddedCubes.Contains(200))
-            {
-                posibleCubesToCreate.Add(cubesToCreate[9]);
-                AddedCubes.Add(200);
-                if (PlayerPrefs.GetInt("score") == 200)
-                    bestResult.GetComponent<Animation>().Play("BestResult");
+
+           foreach (int res in _eventsGame)
+           {
+                int i = 0;
+                if (nowResult >= res && !_addedCubes.Contains(res))
+                {
+                    i++;
+                    _posibleCubesToCreate.Add(_cubesToCreate[i]);
+                    _addedCubes.Add(res);
+                    if (nowResult == res)
+                        _bestResult.GetComponent<Animation>().Play("BestResult");
+                }
             }
         }
     }
@@ -259,15 +188,15 @@ public class GameController : MonoBehaviour
         while (true)
         {
             SpawnPosition();
-            if (nowCountCubes == 50)
-                cubeChangePlaceSpeed = 0.45f;
-            if (nowCountCubes == 100)
-                cubeChangePlaceSpeed = 0.4f;
-            if (nowCountCubes == 150)
-                cubeChangePlaceSpeed = 0.3f;
-            if (nowCountCubes == 190)
-                cubeChangePlaceSpeed = 0.25f;
-            yield return new WaitForSeconds(cubeChangePlaceSpeed);
+            if (_nowCountCubes == 50)
+                _cubeChangePlaceSpeed = 0.45f;
+            else if (_nowCountCubes == 100)
+                _cubeChangePlaceSpeed = 0.4f;
+            else if (_nowCountCubes == 150)
+                _cubeChangePlaceSpeed = 0.3f;
+            else if (_nowCountCubes == 190)
+                _cubeChangePlaceSpeed = 0.25f;
+            yield return new WaitForSeconds(_cubeChangePlaceSpeed);
         }
     }
 
@@ -284,42 +213,42 @@ public class GameController : MonoBehaviour
     {
         List<Vector3> position = new List<Vector3>();
         
-        if (IsPositionEmpty(new Vector3(nowCube.x + 1, nowCube.y, nowCube.z)) && nowCube.x + 1 != cubeToPlace.position.x)
-            position.Add(new Vector3(nowCube.x + 1, nowCube.y, nowCube.z));    
+        if (IsPositionEmpty(new Vector3(_nowCube.x + 1, _nowCube.y, _nowCube.z)) && _nowCube.x + 1 != _cubeToPlace.position.x)
+            position.Add(new Vector3(_nowCube.x + 1, _nowCube.y, _nowCube.z));    
         
-        if (IsPositionEmpty(new Vector3(nowCube.x - 1, nowCube.y, nowCube.z)) && nowCube.x - 1 != cubeToPlace.position.x)
-            position.Add(new Vector3(nowCube.x - 1, nowCube.y, nowCube.z));
+        if (IsPositionEmpty(new Vector3(_nowCube.x - 1, _nowCube.y, _nowCube.z)) && _nowCube.x - 1 != _cubeToPlace.position.x)
+            position.Add(new Vector3(_nowCube.x - 1, _nowCube.y, _nowCube.z));
 
-        if (IsPositionEmpty(new Vector3(nowCube.x, nowCube.y + 1, nowCube.z)) && nowCube.y + 1 != cubeToPlace.position.y)
-            position.Add(new Vector3(nowCube.x, nowCube.y + 1, nowCube.z));
+        if (IsPositionEmpty(new Vector3(_nowCube.x, _nowCube.y + 1, _nowCube.z)) && _nowCube.y + 1 != _cubeToPlace.position.y)
+            position.Add(new Vector3(_nowCube.x, _nowCube.y + 1, _nowCube.z));
 
-        if (IsPositionEmpty(new Vector3(nowCube.x, nowCube.y - 1, nowCube.z)) && nowCube.y - 1 != cubeToPlace.position.y)
-            position.Add(new Vector3(nowCube.x, nowCube.y - 1, nowCube.z));
+        if (IsPositionEmpty(new Vector3(_nowCube.x, _nowCube.y - 1, _nowCube.z)) && _nowCube.y - 1 != _cubeToPlace.position.y)
+            position.Add(new Vector3(_nowCube.x, _nowCube.y - 1, _nowCube.z));
 
-        if (IsPositionEmpty(new Vector3(nowCube.x, nowCube.y, nowCube.z + 1)) && nowCube.z + 1 != cubeToPlace.position.z)
-            position.Add(new Vector3(nowCube.x, nowCube.y, nowCube.z + 1));
+        if (IsPositionEmpty(new Vector3(_nowCube.x, _nowCube.y, _nowCube.z + 1)) && _nowCube.z + 1 != _cubeToPlace.position.z)
+            position.Add(new Vector3(_nowCube.x, _nowCube.y, _nowCube.z + 1));
 
-        if (IsPositionEmpty(new Vector3(nowCube.x, nowCube.y, nowCube.z - 1)) && nowCube.z - 1 != cubeToPlace.position.z)
-            position.Add(new Vector3(nowCube.x, nowCube.y, nowCube.z - 1));
+        if (IsPositionEmpty(new Vector3(_nowCube.x, _nowCube.y, _nowCube.z - 1)) && _nowCube.z - 1 != _cubeToPlace.position.z)
+            position.Add(new Vector3(_nowCube.x, _nowCube.y, _nowCube.z - 1));
 
 
         if (position.Count > 1)
         {
-            cubeToPlace.position = position[UnityEngine.Random.Range(0, position.Count)];
+            _cubeToPlace.position = position[UnityEngine.Random.Range(0, position.Count)];
         }
 
         if (position.Count == 1)
-            cubeToPlace.position = position[0];
+            _cubeToPlace.position = position[0];
         
         if (position.Count < 1)
         {
-            Destroy(cubeToPlace.gameObject);
-            IsLose = true;
-            StopCoroutine(showCubePlace);
-            gameOver.SetActive(true);
-            gameOver.GetComponent<GameOver>().SetNewResult();
+            Destroy(_cubeToPlace.gameObject);
+            _isLose = true;
+            StopCoroutine(_showCubePlace);
+            _gameOver.SetActive(true);
+            _gameOver.GetComponent<GameOver>().SetNewResult();
             if (PlayerPrefs.GetString("sound").Equals("Yes"))
-                gameOver.GetComponent<AudioSource>().Play();
+                _gameOver.GetComponent<AudioSource>().Play();
         }
 
     }
@@ -329,7 +258,7 @@ public class GameController : MonoBehaviour
         if (targetPos.y == 0)
             return false;
 
-        foreach (Vector3 pos in allCubesPosition)
+        foreach (Vector3 pos in _allCubesPosition)
         {
             if ((pos.x == targetPos.x) && (pos.y == targetPos.y) && (pos.z == targetPos.z))
                 return false;
@@ -342,7 +271,7 @@ public class GameController : MonoBehaviour
     {
         int maxX = 0, maxY = 0, maxZ = 0, maxHor;
 
-        foreach (Vector3 pos in allCubesPosition)
+        foreach (Vector3 pos in _allCubesPosition)
         {
             if (Mathf.Abs(Convert.ToInt32(pos.x)) > maxX)
                 maxX = Convert.ToInt32(pos.x);
@@ -357,18 +286,18 @@ public class GameController : MonoBehaviour
         if (PlayerPrefs.GetInt("score") < maxY - 1)
             PlayerPrefs.SetInt("score", maxY - 1);
 
-        scoreTxt.GetComponent<TextMeshPro>().text = "best: " + PlayerPrefs.GetInt("score") + "\npresent: " + (maxY - 1);
-        nowCountCubes = maxY - 1;
-        PlayerPrefs.SetFloat("nowCountCubes", nowCountCubes);
+        _scoreTxt.GetComponent<TextMeshPro>().text = "best: " + PlayerPrefs.GetInt("score") + "\npresent: " + (maxY - 1);
+        _nowCountCubes = maxY - 1;
+        PlayerPrefs.SetFloat("nowCountCubes", _nowCountCubes);
 
-        camMoveToYPosition = 6f + nowCube.y - 1f;
+        _camMoveToYPosition = 6f + _nowCube.y - 1f;
 
         maxHor = maxX > maxZ ? maxX : maxZ;
 
-        if (maxHor % 3 == 0 && prevCountMaxHorizontal != maxHor)
+        if (maxHor % 3 == 0 && _prevCountMaxHorizontal != maxHor)
         {
-            mainCam.localPosition -= new Vector3(0, 0, 2.5f);
-            prevCountMaxHorizontal = maxHor;
+            _mainCam.localPosition -= new Vector3(0, 0, 2.5f);
+            _prevCountMaxHorizontal = maxHor;
         }
 
     }

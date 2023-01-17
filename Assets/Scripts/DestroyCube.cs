@@ -13,7 +13,7 @@ public class DestroyCube : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
-        if (thisGameObject.transform.transform.position.y < -50f)
+        if (transform.position.y < -50f)
             Destroy(thisGameObject);
     }
 }

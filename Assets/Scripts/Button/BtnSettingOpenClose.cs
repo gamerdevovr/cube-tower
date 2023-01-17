@@ -4,51 +4,53 @@ using UnityEngine;
 
 public class BtnSettingOpenClose : MonoBehaviour
 {
-    public GameObject PodlozhkaSetting;
-    public GameObject BtnSound;
-    public GameObject logo, tapToPlay;
-    public GameObject BestResultForShare, PodlozhkaResult;
+    [SerializeField] private GameObject     _podlozhkaSetting,
+                                    _btnSound,
+                                    _logo,
+                                    _tapToPlay,
+                                    _bestResultForShare, 
+                                    _podlozhkaResult;
 
     public void ClickOpen()
     {
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
-            BtnSound.GetComponent<AudioSource>().Play();
+            _btnSound.GetComponent<AudioSource>().Play();
 
-        BestResultForShare.SetActive(false);
-        PodlozhkaResult.GetComponent<ShowResult>().CloseForm();
+        _bestResultForShare.SetActive(false);
+        _podlozhkaResult.GetComponent<ShowResult>().CloseForm();
 
-        if (logo.activeSelf)
+        if (_logo.activeSelf)
         {
-            logo.GetComponent<ClosedObjects>().SetSettingClosing(true);
-            logo.SetActive(false);
+            _logo.GetComponent<ClosedObjects>().SetSettingClosing(true);
+            _logo.SetActive(false);
         }
 
-        if (tapToPlay.activeSelf)
+        if (_tapToPlay.activeSelf)
         {
-            tapToPlay.GetComponent<ClosedObjects>().SetSettingClosing(true);
-            logo.SetActive(false);
+            _tapToPlay.GetComponent<ClosedObjects>().SetSettingClosing(true);
+            _logo.SetActive(false);
         }
 
 
-        PodlozhkaSetting.SetActive(true);
+        _podlozhkaSetting.SetActive(true);
     }
 
     public void ClickClose()
     {
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
-            BtnSound.GetComponent<AudioSource>().Play();
-        PodlozhkaSetting.SetActive(false);
+            _btnSound.GetComponent<AudioSource>().Play();
+        _podlozhkaSetting.SetActive(false);
 
-        if (logo.GetComponent<ClosedObjects>().GetSettingClosing())
+        if (_logo.GetComponent<ClosedObjects>().GetSettingClosing())
         {
-            logo.GetComponent<ClosedObjects>().SetSettingClosing(false);
-            logo.SetActive(true);
+            _logo.GetComponent<ClosedObjects>().SetSettingClosing(false);
+            _logo.SetActive(true);
         }
 
-        if (tapToPlay.GetComponent<ClosedObjects>().GetSettingClosing())
+        if (_tapToPlay.GetComponent<ClosedObjects>().GetSettingClosing())
         {
-            tapToPlay.GetComponent<ClosedObjects>().SetSettingClosing(false);
-            tapToPlay.SetActive(true);
+            _tapToPlay.GetComponent<ClosedObjects>().SetSettingClosing(false);
+            _tapToPlay.SetActive(true);
         }
     }
 }

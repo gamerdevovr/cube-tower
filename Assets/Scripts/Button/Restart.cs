@@ -4,28 +4,29 @@ using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour
 {
-    public GameObject podlozhka, BtnSound;
+    [SerializeField] private GameObject                 _podlozhka, 
+                                                        _btnSound;
 
     public void Click()
     {
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
-            BtnSound.GetComponent<AudioSource>().Play();
+            _btnSound.GetComponent<AudioSource>().Play();
 
-        podlozhka.SetActive(true);
+        _podlozhka.SetActive(true);
     }
 
     public void BtnYes()
     {
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
-            BtnSound.GetComponent<AudioSource>().Play();
+            _btnSound.GetComponent<AudioSource>().Play();
         StartCoroutine(StartScena("Main"));
     }
 
     public void BtnNo()
     {
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
-            BtnSound.GetComponent<AudioSource>().Play();
-        podlozhka.SetActive(false);
+            _btnSound.GetComponent<AudioSource>().Play();
+        _podlozhka.SetActive(false);
     }
 
     IEnumerator StartScena(string nameScena)

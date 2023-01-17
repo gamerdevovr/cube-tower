@@ -5,34 +5,38 @@ using System.IO;
 
 public class BtnShare : MonoBehaviour
 {
-    public GameObject bestResult, dRes, BtnSound;
-    public GameObject logo, tapToPlay;
-    public GameObject SettingOpenForm, PodlozhkaResult;
+    [SerializeField] private GameObject             _bestResult, 
+                                                    _dRes, 
+                                                    _btnSound,
+                                                    _logo, 
+                                                    _tapToPlay,
+                                                    _settingOpenForm, 
+                                                    _podlozhkaResult;
 
 
     public void Click()
     {
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
-            BtnSound.GetComponent<AudioSource>().Play();
+            _btnSound.GetComponent<AudioSource>().Play();
 
-        SettingOpenForm.GetComponent<BtnSettingOpenClose>().ClickClose();
-        PodlozhkaResult.GetComponent<ShowResult>().CloseForm();
+        _settingOpenForm.GetComponent<BtnSettingOpenClose>().ClickClose();
+        _podlozhkaResult.GetComponent<ShowResult>().CloseForm();
 
-        if (logo.activeSelf)
+        if (_logo.activeSelf)
         {
-            logo.GetComponent<ClosedObjects>().SetShareClosing(true);
-            logo.SetActive(false);
+            _logo.GetComponent<ClosedObjects>().SetShareClosing(true);
+            _logo.SetActive(false);
         }
 
-        if (tapToPlay.activeSelf)
+        if (_tapToPlay.activeSelf)
         {
-            tapToPlay.GetComponent<ClosedObjects>().SetShareClosing(true);
-            logo.SetActive(false);
+            _tapToPlay.GetComponent<ClosedObjects>().SetShareClosing(true);
+            _logo.SetActive(false);
         }
 
 
-        bestResult.SetActive(true);
-        dRes.GetComponent<TextMeshPro>().text = PlayerPrefs.GetInt("score").ToString();
+        _bestResult.SetActive(true);
+        _dRes.GetComponent<TextMeshPro>().text = PlayerPrefs.GetInt("score").ToString();
         StartCoroutine(TakeScreenshotAndShare());
     }
 
@@ -51,7 +55,7 @@ public class BtnShare : MonoBehaviour
         // To avoid memory leaks
         Destroy(ss);
 
-        bestResult.SetActive(false);
+        _bestResult.SetActive(false);
         string Message = "I've had some success in Sky Cubes - " + PlayerPrefs.GetInt("score").ToString() + " cubes uphill!!! Who will beat my record?";
 
         new NativeShare().AddFile(filePath)
@@ -59,16 +63,16 @@ public class BtnShare : MonoBehaviour
             .SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
             .Share();
 
-        if (logo.activeSelf)
+        if (_logo.activeSelf)
         {
-            logo.GetComponent<ClosedObjects>().SetShareClosing(false);
-            logo.SetActive(true);
+            _logo.GetComponent<ClosedObjects>().SetShareClosing(false);
+            _logo.SetActive(true);
         }
 
-        if (tapToPlay.activeSelf)
+        if (_tapToPlay.activeSelf)
         {
-            tapToPlay.GetComponent<ClosedObjects>().SetShareClosing(false);
-            logo.SetActive(true);
+            _tapToPlay.GetComponent<ClosedObjects>().SetShareClosing(false);
+            _logo.SetActive(true);
         }
     }
 }

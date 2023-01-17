@@ -5,49 +5,48 @@ using UnityEngine;
 
 public class ClosedObjects : MonoBehaviour
 {
-    [SerializeField] private bool closingResult = false;
-    [SerializeField] private bool closingShare = false;
-    //[SerializeField] private bool closingSetting = false;
+    [SerializeField] private bool           _closingResult = false,
+                                            _closingShare = false;
 
-    public bool clicked = false;
+    public bool                             _clicked = false;
 
     public void SetResultClosing(bool cl)
     {
-        closingResult = cl;   
+        _closingResult = cl;   
     }
 
     public bool GetResultClosing()
     {
-        return closingResult;
+        return _closingResult;
     }
 
     public void SetShareClosing(bool cl)
     {
-        closingShare = cl;
+        _closingShare = cl;
     }
 
     public bool GetShareClosing()
     {
-        return closingShare;
+        return _closingShare;
     }
 
     public void SetSettingClosing(bool cl)
     {
-        closingShare = cl;
+        _closingShare = cl;
     }
 
     public bool GetSettingClosing()
     {
-        return closingShare;
+        return _closingShare;
     }
 
     public void SetClicked(bool cl)
     {
-        clicked = cl;
+        _clicked = cl;
     }
 
     public bool GetClicked()
     {
-        return clicked;
+        return _clicked;
     }
 }

@@ -5,20 +5,26 @@ using UnityEngine.UI;
 
 public class BtnSoundOnOff : MonoBehaviour
 {
-    public Sprite soundOn, soundOff, BtnMusicSoundOn, BtnMusicSoundOff;
-    public GameObject Sound, _BtnSoundOnOff, BtnSound;
+    [SerializeField] private Sprite             _soundOn, 
+                                                _soundOff, 
+                                                _btnMusicSoundOn, 
+                                                _btnMusicSoundOff;
+    
+    [SerializeField] private GameObject         _sound, 
+                                                _btnSoundOnOff, 
+                                                _btnSound;
 
     public void Start()
     {
         if (!PlayerPrefs.GetString("sound").Equals("Yes"))
         {
-            Sound.GetComponent<Image>().sprite = soundOff;
-            _BtnSoundOnOff.GetComponent<Image>().sprite = BtnMusicSoundOff;
+            _sound.GetComponent<Image>().sprite = _soundOff;
+            _btnSoundOnOff.GetComponent<Image>().sprite = _btnMusicSoundOff;
         }
         else
         {
-            Sound.GetComponent<Image>().sprite = soundOn;
-            _BtnSoundOnOff.GetComponent<Image>().sprite = BtnMusicSoundOn;
+            _sound.GetComponent<Image>().sprite = _soundOn;
+            _btnSoundOnOff.GetComponent<Image>().sprite = _btnMusicSoundOn;
         }
     }
 
@@ -26,19 +32,19 @@ public class BtnSoundOnOff : MonoBehaviour
     public void Click()
     {
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
-            BtnSound.GetComponent<AudioSource>().Play();
+            _btnSound.GetComponent<AudioSource>().Play();
 
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
         {
             PlayerPrefs.SetString("sound", "No");
-            Sound.GetComponent<Image>().sprite = soundOff;
-            _BtnSoundOnOff.GetComponent<Image>().sprite = BtnMusicSoundOff;
+            _sound.GetComponent<Image>().sprite = _soundOff;
+            _btnSoundOnOff.GetComponent<Image>().sprite = _btnMusicSoundOff;
         }
         else
         {
             PlayerPrefs.SetString("sound", "Yes");
-            Sound.GetComponent<Image>().sprite = soundOn;
-            _BtnSoundOnOff.GetComponent<Image>().sprite = BtnMusicSoundOn;
+            _sound.GetComponent<Image>().sprite = _soundOn;
+            _btnSoundOnOff.GetComponent<Image>().sprite = _btnMusicSoundOn;
         }
     }
 }
