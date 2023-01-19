@@ -15,13 +15,13 @@ public class GameController : MonoBehaviour
                                     _gameOver,
                                     _ground,
                                     _fonMusic,
-                                    _bestResult,
+                                    _newCube,
                                     _pausePlay;
     
     public Transform                _cubeToPlace;
     
     public float                    _cubeChangePlaceSpeed = 0.5f,
-                                    _chytluvistKrena;
+                                    _tiltSensitivity;
 
     public GameObject[]             _cubesToCreate,
                                     _canvasStartPage;
@@ -147,7 +147,7 @@ public class GameController : MonoBehaviour
                 _canvasStartPage[1].GetComponent<ClosedObjects>().SetClicked(false);
         }
 
-        if (!_isLose &&  _allCubesRb.velocity.magnitude > _chytluvistKrena)
+        if (!_isLose &&  _allCubesRb.velocity.magnitude > _tiltSensitivity)
         {           
             Destroy(_cubeToPlace.gameObject);
             _isLose = true;
@@ -177,7 +177,7 @@ public class GameController : MonoBehaviour
                     _posibleCubesToCreate.Add(_cubesToCreate[i]);
                     _addedCubes.Add(res);
                     if (nowResult == res)
-                        _bestResult.GetComponent<Animation>().Play("BestResult");
+                        _newCube.GetComponent<Animation>().Play("BestResult");
                 }
             }
         }
