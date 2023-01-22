@@ -15,7 +15,6 @@ public class ShowResult : MonoBehaviour
 
     public void CloseForm()
     {
-
         if (PlayerPrefs.GetString("sound").Equals("Yes"))
             _btnSound.GetComponent<AudioSource>().Play();
 
@@ -32,16 +31,13 @@ public class ShowResult : MonoBehaviour
             _tapToPlay.GetComponent<ClosedObjects>().SetResultClosing(false);
             _tapToPlay.SetActive(true);
         }
-
     }
 
     public void SetResultOnForm()
-    {
-       
+    {     
         _result1.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("result1").ToString();
         _result2.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("result2").ToString();
         _result3.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("result3").ToString();
-
     }
 
 }

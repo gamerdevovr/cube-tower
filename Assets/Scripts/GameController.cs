@@ -4,59 +4,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
 
-    public GameObject               _scoreTxt,
-                                    _allCubes,
-                                    _vfx,
-                                    _newCubeBell,
-                                    _gameOver,
-                                    _ground,
-                                    _fonMusic,
-                                    _newCube,
-                                    _pausePlay;
-    
-    public Transform                _cubeToPlace;
-    
-    public float                    _cubeChangePlaceSpeed = 0.5f,
-                                    _tiltSensitivity;
+    [SerializeField] private GameObject     _scoreTxt,
+                                            _allCubes,
+                                            _vfx,
+                                            _newCubeBell,
+                                            _gameOver,
+                                            _victory,
+                                            _ground,
+                                            _fonMusic,
+                                            _newCube,
+                                            _pausePlay,
+                                            _newCubeImage;
 
-    public GameObject[]             _cubesToCreate,
-                                    _canvasStartPage;
+    [SerializeField] private Transform      _cubeToPlace;
 
-    private int                     _prevCountMaxHorizontal,
-                                    _nowCountCubes = 0;
+    [SerializeField] private float          _cubeChangePlaceSpeed = 0.5f,
+                                            _tiltSensitivity;
 
-    private int[]                   _eventsGame = { 5, 10, 20, 30, 50, 70, 100, 130, 200};
+    [SerializeField] private GameObject[]   _cubesToCreate,
+                                            _canvasStartPage;
 
-    private float                   _camMoveToYPosition,
-                                    _camMoveSpeed = 2f;
+    [SerializeField] private Sprite[]        _cubesImages;
 
-    private bool                    _isLose,
-                                    _firstCube;
+    private int                             _prevCountMaxHorizontal,
+                                            _nowCountCubes = 0,
+                                            _resultVictory = 200;
 
-    private CubePos                 _nowCube = new CubePos(0, 1, 0);
-    private Rigidbody               _allCubesRb;
-    private Coroutine               _showCubePlace;
-    private Transform               _mainCam;
-    private List<GameObject>        _posibleCubesToCreate = new List<GameObject>();
-    private List<int>               _addedCubes = new List<int>();
+    private int[]                           _eventsGame = { 5, 10, 20, 30, 50, 70, 100, 130, 200};
 
-    private List<Vector3>           _allCubesPosition = new List<Vector3>
-                                    {
-                                        new Vector3(0, 0, 0),
-                                        new Vector3(1, 0, 0),
-                                        new Vector3(-1, 0, 0),
-                                        new Vector3(0, 1, 0),
-                                        new Vector3(0, 0, 1),
-                                        new Vector3(0, 0, -1),
-                                        new Vector3(1, 0, 1),
-                                        new Vector3(-1, 0, -1),
-                                        new Vector3(-1, 0, 1),
-                                        new Vector3(1, 0, -1),
-                                    };
+    private float                           _camMoveToYPosition,
+                                            _camMoveSpeed = 2f;
+
+    private bool                            _isLose,
+                                            _firstCube;
+
+    private CubePos                         _nowCube = new CubePos(0, 1, 0);
+    private Rigidbody                       _allCubesRb;
+    private Coroutine                       _showCubePlace;
+    private Transform                       _mainCam;
+    private List<GameObject>                _posibleCubesToCreate = new List<GameObject>();
+    private List<int>                       _addedCubes = new List<int>();
+
+    private List<Vector3>                   _allCubesPosition = new List<Vector3>
+                                            {
+                                                new Vector3(0, 0, 0),
+                                                new Vector3(1, 0, 0),
+                                                new Vector3(-1, 0, 0),
+                                                new Vector3(0, 1, 0),
+                                                new Vector3(0, 0, 1),
+                                                new Vector3(0, 0, -1),
+                                                new Vector3(1, 0, 1),
+                                                new Vector3(-1, 0, -1),
+                                                new Vector3(-1, 0, 1),
+                                                new Vector3(1, 0, -1),
+                                            };
+
 
     private void Start()
     {
@@ -163,21 +170,33 @@ public class GameController : MonoBehaviour
 
     IEnumerator AddPosibleCubesToCreate()
     {
+        int i = 0;
         while (true)
         {
             int nowResult = _nowCountCubes;
-            yield return new WaitForSeconds(2);
-
-           foreach (int res in _eventsGame)
-           {
-                int i = 0;
+            yield return new WaitForSeconds(1);
+  
+            foreach (int res in _eventsGame)
+            {
                 if (nowResult >= res && !_addedCubes.Contains(res))
                 {
                     i++;
                     _posibleCubesToCreate.Add(_cubesToCreate[i]);
                     _addedCubes.Add(res);
+                    
                     if (nowResult == res)
+                    {
+                        
+                        _newCubeImage.GetComponent<Image>().sprite = _cubesImages[i];
                         _newCube.GetComponent<Animation>().Play("BestResult");
+                        
+                        if (nowResult == _resultVictory)
+                        {
+                            _victory.SetActive(true);
+                            _victory.GetComponent<AudioSource>().Play();
+                        }
+
+                    }
                 }
             }
         }
