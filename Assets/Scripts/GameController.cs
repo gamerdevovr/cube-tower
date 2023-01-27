@@ -161,8 +161,6 @@ public class GameController : MonoBehaviour
             StopCoroutine(_showCubePlace);
             _gameOver.SetActive(true);
             _gameOver.GetComponent<GameOver>().SetNewResult();
-            if (PlayerPrefs.GetString("sound").Equals("Yes"))
-                _gameOver.GetComponent<AudioSource>().Play();
         }
 
         _mainCam.localPosition = Vector3.MoveTowards(_mainCam.localPosition, new Vector3(_mainCam.localPosition.x, _camMoveToYPosition, _mainCam.localPosition.z), _camMoveSpeed * Time.deltaTime);
