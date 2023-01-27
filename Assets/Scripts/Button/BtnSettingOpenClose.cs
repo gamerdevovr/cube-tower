@@ -5,11 +5,11 @@ using UnityEngine;
 public class BtnSettingOpenClose : MonoBehaviour
 {
     [SerializeField] private GameObject     _podlozhkaSetting,
-                                    _btnSound,
-                                    _logo,
-                                    _tapToPlay,
-                                    _bestResultForShare, 
-                                    _podlozhkaResult;
+                                            _btnSound,
+                                            _logo,
+                                            _tapToPlay,
+                                            _bestResultForShare, 
+                                            _podlozhkaResult;
 
     public void ClickOpen()
     {
@@ -53,4 +53,5 @@ public class BtnSettingOpenClose : MonoBehaviour
             _tapToPlay.SetActive(true);
         }
     }
+
 }

@@ -6,14 +6,15 @@ public class DestroyCube : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
-        StartCoroutine(CourDestroy(gameObject));       
+        StartCoroutine(CourDestroy());       
     }
 
-    IEnumerator CourDestroy(GameObject thisGameObject)
+    IEnumerator CourDestroy()
     {
         yield return new WaitForSeconds(2f);
 
         if (transform.position.y < -50f)
-            Destroy(thisGameObject);
+            Destroy(this);
     }
+
 }

@@ -28,4 +28,5 @@ public class HomeExit : MonoBehaviour
             _btnSound.GetComponent<AudioSource>().Play();
         _podlozhka.SetActive(false);
     }
+
 }

@@ -47,4 +47,5 @@ public class BtnSoundOnOff : MonoBehaviour
             _btnSoundOnOff.GetComponent<Image>().sprite = _btnMusicSoundOn;
         }
     }
+
 }

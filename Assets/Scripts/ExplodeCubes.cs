@@ -3,12 +3,12 @@ using UnityEngine;
 public class ExplodeCubes : MonoBehaviour
 {
 
-    public GameObject           _gameOver,
-                                _explosion;
+    [SerializeField] private GameObject     _gameOver,
+                                            _explosion;
 
-    private bool                _collisionSet;
+    private bool                            _collisionSet;
 
-    private float               _distanceMoveCamera;
+    private float                           _distanceMoveCamera;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -44,4 +44,5 @@ public class ExplodeCubes : MonoBehaviour
             transform.localScale = new Vector3(3f, 0.5f, 3f);
         }
     }
+
 }

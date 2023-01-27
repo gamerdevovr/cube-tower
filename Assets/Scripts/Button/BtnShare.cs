@@ -40,7 +40,6 @@ public class BtnShare : MonoBehaviour
         StartCoroutine(TakeScreenshotAndShare());
     }
 
-
     private IEnumerator TakeScreenshotAndShare()
     {
         yield return new WaitForEndOfFrame();
@@ -75,4 +74,5 @@ public class BtnShare : MonoBehaviour
             _logo.SetActive(true);
         }
     }
+
 }

@@ -51,4 +51,5 @@ public class CanvasButtons : MonoBehaviour
         _victory.SetActive(false);
         _victory.GetComponent<AudioSource>().volume = 0f;
     }
+
 }

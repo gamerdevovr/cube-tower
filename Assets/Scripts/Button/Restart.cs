@@ -37,4 +37,5 @@ public class Restart : MonoBehaviour
             SceneManager.LoadScene(nameScena);
         }
     }
+
 }

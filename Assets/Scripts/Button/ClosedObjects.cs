@@ -8,7 +8,7 @@ public class ClosedObjects : MonoBehaviour
     [SerializeField] private bool           _closingResult = false,
                                             _closingShare = false;
 
-    public bool                             _clicked = false;
+    public bool                             Clicked = false;
 
     public void SetResultClosing(bool cl)
     {
@@ -42,11 +42,12 @@ public class ClosedObjects : MonoBehaviour
 
     public void SetClicked(bool cl)
     {
-        _clicked = cl;
+        Clicked = cl;
     }
 
     public bool GetClicked()
     {
-        return _clicked;
+        return Clicked;
     }
+
 }

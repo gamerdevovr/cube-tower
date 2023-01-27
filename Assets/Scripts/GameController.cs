@@ -65,6 +65,10 @@ public class GameController : MonoBehaviour
                                             };
 
 
+
+
+
+
     private void Start()
     {
         int startResult = PlayerPrefs.GetInt("score");
