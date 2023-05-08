@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class RorateCamera : MonoBehaviour
 {
-    [SerializeField]    private float              _speed = 5f;
-                        private Transform          _rotator;
+    [SerializeField] private float _speed = 5f;
+                        
+    private Transform _rotator;
 
     private void Start()
     {

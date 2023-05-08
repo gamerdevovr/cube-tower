@@ -2048,7 +2048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1fb78b4a5cffd40bacd49f4642c74c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreTxt: {fileID: 1195824776}
   _allCubes: {fileID: 476828341}
   _vfx: {fileID: 180128, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 3}
   _newCubeBell: {fileID: 1493302042}
@@ -2058,7 +2057,8 @@ MonoBehaviour:
   _fonMusic: {fileID: 465080201}
   _newCube: {fileID: 231674216}
   _pausePlay: {fileID: 936216493}
-  _newCubeImage: {fileID: 312653610}
+  _scoreTxt: {fileID: 1195824781}
+  _newCubeImage: {fileID: 312653612}
   _cubeToPlace: {fileID: 1532965379}
   _cubeChangePlaceSpeed: 0.5
   _tiltSensitivity: 0.2
@@ -3916,7 +3916,7 @@ AudioSource:
     m_RotationOrder: 4
 --- !u!95 &980714240
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3933,7 +3933,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &980714241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5485,7 +5485,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!95 &1469183762
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5502,7 +5502,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &1469183763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5517,7 +5517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _closingResult: 0
   _closingShare: 0
-  _clicked: 0
+  Clicked: 0
 --- !u!1 &1473545299
 GameObject:
   m_ObjectHideFlags: 0
@@ -6674,7 +6674,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1927674536
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6691,7 +6691,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &1927674538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6744,7 +6744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _closingResult: 0
   _closingShare: 0
-  _clicked: 0
+  Clicked: 0
 --- !u!114 &1927674541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7397,7 +7397,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!95 &2060138560
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7414,7 +7414,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &2063312458
 GameObject:
   m_ObjectHideFlags: 0

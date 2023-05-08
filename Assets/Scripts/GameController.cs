@@ -5,67 +5,61 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public class GameController : MonoBehaviour
 {
 
-    [SerializeField] private GameObject     _scoreTxt,
-                                            _allCubes,
-                                            _vfx,
-                                            _newCubeBell,
-                                            _gameOver,
-                                            _victory,
-                                            _ground,
-                                            _fonMusic,
-                                            _newCube,
-                                            _pausePlay,
-                                            _newCubeImage;
+    [SerializeField] private GameObject _allCubes;
+    [SerializeField] private GameObject _vfx;
+    [SerializeField] private GameObject _newCubeBell;
+    [SerializeField] private GameObject _gameOver;
+    [SerializeField] private GameObject _victory;
+    [SerializeField] private GameObject _ground;
+    [SerializeField] private GameObject _fonMusic;
+    [SerializeField] private GameObject _newCube;
+    [SerializeField] private GameObject _pausePlay;
+    [SerializeField] private TextMeshPro _scoreTxt;
+    [SerializeField] private Image _newCubeImage;
+    [SerializeField] private Transform _cubeToPlace;
+    [SerializeField] private float _cubeChangePlaceSpeed = 0.5f;
+    [SerializeField] private float _tiltSensitivity;
+    [SerializeField] private GameObject[] _cubesToCreate;
+    [SerializeField] private GameObject[] _canvasStartPage;
+    [SerializeField] private Sprite[] _cubesImages;
 
-    [SerializeField] private Transform      _cubeToPlace;
+    private int _prevCountMaxHorizontal;
+    private int _nowCountCubes = 0;
+    private int _resultVictory = 200;
 
-    [SerializeField] private float          _cubeChangePlaceSpeed = 0.5f,
-                                            _tiltSensitivity;
+    private int[] _eventsGame = { 5, 10, 20, 30, 50, 70, 100, 130, 200};
 
-    [SerializeField] private GameObject[]   _cubesToCreate,
-                                            _canvasStartPage;
+    private float _camMoveToYPosition;
+    private float _camMoveSpeed = 2f;
 
-    [SerializeField] private Sprite[]        _cubesImages;
+    private bool _isLose;
+    private bool _firstCube;
 
-    private int                             _prevCountMaxHorizontal,
-                                            _nowCountCubes = 0,
-                                            _resultVictory = 200;
+    private CubePos _nowCube = new CubePos(new Vector3(0, 1, 0));
+    private Rigidbody _allCubesRb;
+    private Coroutine _showCubePlace;
+    private Transform _mainCam;
+    private List<GameObject> _posibleCubesToCreate = new List<GameObject>();
+    private List<int> _addedCubes = new List<int>();
 
-    private int[]                           _eventsGame = { 5, 10, 20, 30, 50, 70, 100, 130, 200};
-
-    private float                           _camMoveToYPosition,
-                                            _camMoveSpeed = 2f;
-
-    private bool                            _isLose,
-                                            _firstCube;
-
-    private CubePos                         _nowCube = new CubePos(0, 1, 0);
-    private Rigidbody                       _allCubesRb;
-    private Coroutine                       _showCubePlace;
-    private Transform                       _mainCam;
-    private List<GameObject>                _posibleCubesToCreate = new List<GameObject>();
-    private List<int>                       _addedCubes = new List<int>();
-
-    private List<Vector3>                   _allCubesPosition = new List<Vector3>
-                                            {
-                                                new Vector3(0, 0, 0),
-                                                new Vector3(1, 0, 0),
-                                                new Vector3(-1, 0, 0),
-                                                new Vector3(0, 1, 0),
-                                                new Vector3(0, 0, 1),
-                                                new Vector3(0, 0, -1),
-                                                new Vector3(1, 0, 1),
-                                                new Vector3(-1, 0, -1),
-                                                new Vector3(-1, 0, 1),
-                                                new Vector3(1, 0, -1),
-                                            };
-
-
-
+    private List<Vector3> _allCubesPosition = new List<Vector3>
+    {
+    new Vector3(0, 0, 0),
+    new Vector3(1, 0, 0),
+    new Vector3(-1, 0, 0),
+    new Vector3(0, 1, 0),
+    new Vector3(0, 0, 1),
+    new Vector3(0, 0, -1),
+    new Vector3(1, 0, 1),
+    new Vector3(-1, 0, -1),
+    new Vector3(-1, 0, 1),
+    new Vector3(1, 0, -1)
+    };
 
 
 
@@ -101,7 +95,7 @@ public class GameController : MonoBehaviour
 
         PlayerPrefs.SetInt("nowCountCubes", 0);
         _mainCam = Camera.main.transform;
-        _camMoveToYPosition = 6f + _nowCube.y - 1f;
+        _camMoveToYPosition = 6f + _nowCube.Position.y - 1f;
 
         _allCubesRb = _allCubes.GetComponent<Rigidbody>();
         _showCubePlace = StartCoroutine(ShowCubePlace());
@@ -138,8 +132,10 @@ public class GameController : MonoBehaviour
             GameObject newCube = Instantiate(createCube, _cubeToPlace.position, Quaternion.identity) as GameObject;
 
             newCube.transform.SetParent(_allCubes.transform);
-            _nowCube.setVector(_cubeToPlace.position);
-            _allCubesPosition.Add(_nowCube.getVector());
+            
+            _nowCube.Position = _cubeToPlace.position;
+            
+            _allCubesPosition.Add(_nowCube.Position);
 
             if (PlayerPrefs.GetString("sound").Equals("Yes"))
                 _newCubeBell.GetComponent<AudioSource>().Play();
@@ -233,24 +229,19 @@ public class GameController : MonoBehaviour
     private void SpawnPosition()
     {
         List<Vector3> position = new List<Vector3>();
-        
-        if (IsPositionEmpty(new Vector3(_nowCube.x + 1, _nowCube.y, _nowCube.z)) && _nowCube.x + 1 != _cubeToPlace.position.x)
-            position.Add(new Vector3(_nowCube.x + 1, _nowCube.y, _nowCube.z));    
-        
-        if (IsPositionEmpty(new Vector3(_nowCube.x - 1, _nowCube.y, _nowCube.z)) && _nowCube.x - 1 != _cubeToPlace.position.x)
-            position.Add(new Vector3(_nowCube.x - 1, _nowCube.y, _nowCube.z));
 
-        if (IsPositionEmpty(new Vector3(_nowCube.x, _nowCube.y + 1, _nowCube.z)) && _nowCube.y + 1 != _cubeToPlace.position.y)
-            position.Add(new Vector3(_nowCube.x, _nowCube.y + 1, _nowCube.z));
+        Vector3[] directions = new Vector3[] {
+            Vector3.right,
+            Vector3.left,
+            Vector3.up,
+            Vector3.down,
+            Vector3.forward,
+            Vector3.back
+        };
 
-        if (IsPositionEmpty(new Vector3(_nowCube.x, _nowCube.y - 1, _nowCube.z)) && _nowCube.y - 1 != _cubeToPlace.position.y)
-            position.Add(new Vector3(_nowCube.x, _nowCube.y - 1, _nowCube.z));
+        var emptyPositions = directions.Select(d => _nowCube.Position + d).Where(p => IsPositionEmpty(p) && p != _cubeToPlace.position);
 
-        if (IsPositionEmpty(new Vector3(_nowCube.x, _nowCube.y, _nowCube.z + 1)) && _nowCube.z + 1 != _cubeToPlace.position.z)
-            position.Add(new Vector3(_nowCube.x, _nowCube.y, _nowCube.z + 1));
-
-        if (IsPositionEmpty(new Vector3(_nowCube.x, _nowCube.y, _nowCube.z - 1)) && _nowCube.z - 1 != _cubeToPlace.position.z)
-            position.Add(new Vector3(_nowCube.x, _nowCube.y, _nowCube.z - 1));
+        position.AddRange(emptyPositions);
 
 
         if (position.Count > 1)
@@ -311,7 +302,7 @@ public class GameController : MonoBehaviour
         _nowCountCubes = maxY - 1;
         PlayerPrefs.SetFloat("nowCountCubes", _nowCountCubes);
 
-        _camMoveToYPosition = 6f + _nowCube.y - 1f;
+        _camMoveToYPosition = 6f + _nowCube.Position.y - 1f;
 
         maxHor = maxX > maxZ ? maxX : maxZ;
 
@@ -327,24 +318,10 @@ public class GameController : MonoBehaviour
 
 struct CubePos 
 {
-    public int x, y, z;
+    public Vector3 Position { get; set; }
 
-    public CubePos(int x, int y, int z)
+    public CubePos(Vector3 position)
     {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-
-    public Vector3 getVector()
-    {
-        return new Vector3(x, y, z);
-    }
-
-    public void setVector(Vector3 pos)
-    {
-        x = Convert.ToInt32(pos.x);
-        y = Convert.ToInt32(pos.y);
-        z = Convert.ToInt32(pos.z);
+       Position = position;
     }
 }
